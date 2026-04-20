@@ -1,0 +1,176 @@
+    <nav class="nxl-navigation">
+        <div class="navbar-wrapper">
+            <div class="m-header">
+                <a href="https://bestwpware.com/html/tf/duralux-demo/index.html" class="b-brand">
+                    <!-- ========   change your logo hear   ============ -->
+                    <img src="https://bestwpware.com/html/tf/duralux-demo/assets/images/logo-full.png" alt=""
+                        class="logo logo-lg" />
+                    <img src="https://bestwpware.com/html/tf/duralux-demo/assets/images/logo-abbr.png" alt=""
+                        class="logo logo-sm" />
+                </a>
+            </div>
+            <div class="navbar-content">
+                <ul class="nxl-navbar">
+                    <li class="nxl-item nxl-caption">
+                        <label>Navigation</label>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-airplay"></i></span>
+                            <span class="nxl-mtext">Dashboards</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item">
+                                <a href="{{ route('admin') }}" class="nxl-link">Admin</a>
+                            <li class="nxl-item">
+                                <a href="{{ route('students') }}" class="nxl-link">All Students</a>
+                            </li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Parents</a>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Teachers</a>
+                        </ul>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-users"></i></span>
+                            <span class="nxl-mtext">Students</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+
+                            <li class="nxl-item"><a href="#" class="nxl-link">Stundets</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Stundets Details</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Admission Form</a></li>
+                        </ul>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user-check"></i></span>
+                            <span class="nxl-mtext">Teachers</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a href="#" class="nxl-link">All Teachers</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Teachers Details</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Add Teachers</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Payment</a></li>
+                        </ul>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user"></i></span>
+
+                            <span class="nxl-mtext">Parents</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a href="#" class="nxl-link">All Parents</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Parents Details</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Add Parents</a></li>
+                        </ul>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-book"></i></span>
+                            <span class="nxl-mtext">Library</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a href="#" class="nxl-link">All Book</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link"> Add New Book</a></li>
+                        </ul>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-dollar-sign"></i></span>
+                            <span class="nxl-mtext">Account</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a href="#" class="nxl-link">All Fees Collection</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Expensee</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Add Expensee</a></li>
+                        </ul>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-layers"></i></span>
+                            <span class="nxl-mtext">Class</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a href="#" class="nxl-link">All Class</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Add New Class</a></li>
+                        </ul>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-book-open"></i></span>
+                            <span class="nxl-mtext">Subjects</span><span class="nxl-arrow">
+
+                        </a>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-calendar"></i></span>
+                            <span class="nxl-mtext">Class Routine</span><span class="nxl-arrow">
+                        </a>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-check-square"></i></span>
+                            <span class="nxl-mtext">Attendence</span><span class="nxl-arrow">
+                        </a>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-file-text"></i></span>
+                            <span class="nxl-mtext">Exam</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a href="#" class="nxl-link">Exam Schedule</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Exam Grade</a></li>
+                        </ul>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-settings"></i></span>
+                            <span class="nxl-mtext">Settings</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a href="#" class="nxl-link">Genral</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Genral</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-help-circle"></i></span>
+                            <span class="nxl-mtext">Help Center</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a class="nxl-link" href="#/">Support</a></li>
+                            <li class="nxl-item"><a class="nxl-link"
+                                    href="https://bestwpware.com/html/tf/duralux-demo/help-knowledgebase.html">KnowledgeBase</a>
+                            </li>
+                            <li class="nxl-item"><a class="nxl-link"
+                                    href="https://bestwpware.com/html/tf/duralux-demo/.docs/documentations.html">Documentations</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="feather-sunrise fs-4 text-dark"></i>
+                        <h6 class="mt-4 text-dark fw-bolder">Downloading Center</h6>
+                        <p class="fs-11 my-3 text-dark">Duralux is a production ready CRM to get started up and running
+                            easily.</p>
+                        <a href="javascript:void(0);" class="btn btn-primary text-dark w-100">Download Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
