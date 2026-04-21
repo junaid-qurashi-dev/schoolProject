@@ -10,7 +10,7 @@
                         <h5 class="m-b-10">Dashboard</h5>
                     </div>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="https://bestwpware.com/html/tf/duralux-demo/index.html">Home</a>
+                        <li class="breadcrumb-item"><a href="{{ route('admin') }}">Home</a>
                         </li>
                         <li class="breadcrumb-item">Dashboard</li>
                     </ul>

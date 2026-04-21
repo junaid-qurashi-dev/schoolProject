@@ -1,7 +1,7 @@
     <nav class="nxl-navigation">
         <div class="navbar-wrapper">
             <div class="m-header">
-                <a href="https://bestwpware.com/html/tf/duralux-demo/index.html" class="b-brand">
+                <a href="{{ route('admin') }}" class="b-brand">
                     <!-- ========   change your logo hear   ============ -->
                     <img src="https://bestwpware.com/html/tf/duralux-demo/assets/images/logo-full.png" alt=""
                         class="logo logo-lg" />
@@ -26,8 +26,8 @@
                             <li class="nxl-item">
                                 <a href="{{ route('students') }}" class="nxl-link">All Students</a>
                             </li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Parents</a>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Teachers</a>
+                            <li class="nxl-item"><a href="{{ route('parents') }}" class="nxl-link">Parents</a>
+                            <li class="nxl-item"><a href="{{ route('teachers') }}" class="nxl-link">Teachers</a>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">

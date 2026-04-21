@@ -9,7 +9,7 @@
                     <h5>Students</h5>
                 </div>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="https://bestwpware.com/html/tf/duralux-demo/index.html">List</a>
+                    <li class="breadcrumb-item"><a href="#">List</a>
                     </li>
                     <li class="breadcrumb-item">Students Details</li>
                 </ul>
