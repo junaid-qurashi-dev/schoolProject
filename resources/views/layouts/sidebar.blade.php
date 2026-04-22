@@ -28,6 +28,7 @@
                             </li>
                             <li class="nxl-item"><a href="{{ route('parents') }}" class="nxl-link">Parents</a>
                             <li class="nxl-item"><a href="{{ route('teachers') }}" class="nxl-link">Teachers</a>
+                            <li class="nxl-item"><a href="{{ route('AddNew') }}" class="nxl-link">Add New</a>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -38,7 +39,7 @@
                         </a>
                         <ul class="nxl-submenu">
 
-                            <li class="nxl-item"><a href="#" class="nxl-link">Stundets</a></li>
+                            <li class="nxl-item"><a href="{{ route('StudentsAll') }}" class="nxl-link">Stundets</a></li>
                             <li class="nxl-item"><a href="#" class="nxl-link">Stundets Details</a></li>
                             <li class="nxl-item"><a href="#" class="nxl-link">Admission Form</a></li>
                         </ul>

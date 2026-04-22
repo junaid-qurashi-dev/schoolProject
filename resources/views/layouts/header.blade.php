@@ -26,6 +26,8 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <script src="{{ asset('assets/js/script.js') }}"></script>
+
 
 </head>
 

@@ -10,4 +10,12 @@ class StudentController extends Controller
     {
         return view('pages.students');
     }
+    function StudentsAll()
+    {
+        return view('main.studentinfo');
+    }
+    function StudentsTab()
+    {
+        return view('main.studentview');
+    }
 }

@@ -16,3 +16,35 @@
 .icon-box i {
     font-size: 28px;
 }
+.custom-action-dropdown .dropdown-menu {
+    position: absolute !important;
+    inset: auto !important;
+
+    top: 0;
+    left: auto;
+    right: 100%; /* 👈 LEFT side open */
+
+    margin: 0 8px;
+    min-width: 150px;
+
+    padding: 6px 0;
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    z-index: 9999; /* 👈 sabke upar aaye */
+}
+.table-responsive {
+    overflow: visible !important;
+}
+.custom-action-dropdown .dropdown-item {
+    font-size: 14px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.custom-action-dropdown .dropdown-item:hover {
+    background: #f5f5f5;
+}
