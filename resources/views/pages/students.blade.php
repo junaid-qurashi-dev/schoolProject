@@ -24,9 +24,9 @@
                         <button class="btn btn-success btn-sm">
                             <i class="bi bi-file-earmark-excel me-1"></i> Export
                         </button>
-                        <button class="btn btn-primary btn-sm">
+                        <a href="{{ route('AddStudents') }}" class="btn btn-primary btn-sm">
                             <i class="bi bi-plus-lg me-1"></i> Add Student
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" class="dropdown-item text-success">
+                                                    <a href="{{ route('EditStudent') }}" class="dropdown-item text-success">
                                                         <i class="bi bi-gear me-2"></i> Edit
                                                     </a>
                                                 </li>
@@ -229,6 +229,20 @@
                 });
             </script>
         </div>
-
+        <footer class="footer">
+            <p class="fs-11 text-muted fw-medium text-uppercase mb-0 copyright">
+                <span>Copyright ©</span>
+                <script data-cfasync="false" src="https://bestwpware.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+                    defer></script>
+                <script>
+                    document.write(new Date().getFullYear());
+                </script>
+            </p>
+            <div class="d-flex align-items-center gap-4">
+                <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Help</a>
+                <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Terms</a>
+                <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Privacy</a>
+            </div>
+        </footer>
     </main>
 @endsection

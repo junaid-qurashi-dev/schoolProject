@@ -14,8 +14,19 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/home', [AppController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin');
 Route::get('/AddNew', [AddController::class, 'AddNew'])->name('AddNew');
+// Students Route
 Route::get('/students', [StudentController::class, 'index'])->name('students');
+Route::get('/AddStudents', [StudentController::class, 'AddStudents'])->name('AddStudents');
 Route::get('/StudentsAll', [StudentController::class, 'StudentsAll'])->name('StudentsAll');
 Route::get('/StudentsTab', [StudentController::class, 'StudentsTab'])->name('StudentsTab');
+Route::get('/EditStudent', [StudentController::class, 'EditStudent'])->name('EditStudent');
+// Add Student //
+Route::post('/students/store', [StudentController::class, 'store'])->name('students.store');
+
 Route::get('/parents', [ParentsController::class, 'index'])->name('parents');
+
+// Teachers Route
 Route::get('/teacher', [TeachersController::class, 'index'])->name('teachers');
+Route::get('/teacherview', [TeachersController::class, 'teacherview'])->name('teachersview');
+Route::get('/addteacher', [TeachersController::class, 'addteacher'])->name('addteacher');
+Route::get('/editteacher', [TeachersController::class, 'editteacher'])->name('editteacher');

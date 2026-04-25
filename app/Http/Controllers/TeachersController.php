@@ -10,4 +10,16 @@ class TeachersController extends Controller
     {
         return view('pages.teachers');
     }
+    function teacherview()
+    {
+        return view('teachers.teacherview');
+    }
+    function addteacher()
+    {
+        return view('teachers.addteacher');
+    }
+    function editteacher()
+    {
+        return view('teachers.editteacher');
+    }
 }
