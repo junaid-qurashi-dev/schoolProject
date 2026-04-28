@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->integer('roll_number');
             $table->string('name');
-            $table->string('email');
-            $table->string('phone');
             $table->string('gender');
-            $table->date('dob');
+            $table->date('dob')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('phone')->nullable();
             $table->string('class');
-            $table->string('photo');
-            $table->date('admission_date');
-            $table->text('address');
+            $table->string('section');
+            $table->string('photo')->nullable();
+            $table->date('admission_date')->nullable();
+            $table->text('address')->nullable();
             $table->timestamps();
         });
     }

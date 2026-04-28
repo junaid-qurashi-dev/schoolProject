@@ -51,12 +51,12 @@
 
                             <thead class="table-light">
                                 <tr>
-                                    <th>Roll</th>
+                                    <th>ID</th>
                                     <th>Student</th>
                                     <th>Gender</th>
                                     <th>Class</th>
                                     <th>Section</th>
-                                    <th>Parents</th>
+
                                     <th>Phone</th>
                                     <th>Email</th>
                                     <th class="text-start">Action</th>
@@ -64,103 +64,52 @@
                             </thead>
 
                             <tbody>
+                                @foreach ($students as $student)
+                                    <tr>
+                                        <td>#{{ $student->id }}</td>
+                                        <td class="d-flex align-items-center gap-2">
+                                            <img src="{{ $student->photo ? asset('storage/' . $student->photo) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
+                                                class="rounded-circle" style="width:45px;height:45px;object-fit:cover;">
+                                            <span class="fw semibold">{{ $student->name }}</span>
+                                        </td>
+                                        <td>{{ $student->gender }}</td>
+                                        <td>{{ $student->class }}</td>
+                                        <td>{{ $student->section }}</td>
+                                        <td>{{ $student->phone }}</td>
+                                        <td>{{ $student->email }}</td>
+                                        <td class="text-start position-relative overflow-visible">
+                                            <div class="dropdown dropstart custom-action-dropdown">
+                                                <button class="btn btn-light btn-sm rounded-circle"
+                                                    data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                                                    style="width:32px;height:32px;">
 
-                                <!-- Row 1 -->
-                                <tr>
-                                    <td>#101</td>
+                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                </button>
 
-                                    <td class="d-flex align-items-center gap-2">
-                                        <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAzL3Jhd3BpeGVsb2ZmaWNlMTBfcGhvdG9ncmFwaHlfb2ZfaGFwcHlfaW5kaWFuX2tpZF9wcmltYXJ5X2VsZW1lbl8xNjBlOTM4MC1mZDhlLTQ2ZGEtYmExOS04YzhmOGZjNWZhZjIucG5n.png"
-                                            class="rounded-circle" style="width:45px;height:45px;object-fit:cover;">
-                                        <span class="fw-semibold">Rahul Sharma</span>
-                                    </td>
+                                                <ul class="dropdown-menu custom-dropdown-menu">
+                                                    <li>
+                                                        <a href="{{ route('StudentView', $student->id) }}"
+                                                            class="dropdown-item text-danger">
+                                                            <i class="bi bi-eye me-2"></i> View
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ route('EditStudent') }}"
+                                                            class="dropdown-item text-success">
+                                                            <i class="bi bi-gear me-2"></i> Edit
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="dropdown-item text-warning">
+                                                            <i class="bi bi-trash me-2"></i> Delete
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
 
-                                    <td>Male</td>
-                                    <td>10</td>
-                                    <td>A</td>
-                                    <td>Ramesh Sharma</td>
-                                    <td>9876543210</td>
-                                    <td>rahul@email.com</td>
-
-                                    <!-- Action -->
-                                    <td class="text-start position-relative overflow-visible">
-                                        <div class="dropdown dropstart custom-action-dropdown">
-                                            <button class="btn btn-light btn-sm rounded-circle" data-bs-toggle="dropdown"
-                                                data-bs-auto-close="outside" style="width:32px;height:32px;">
-
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-
-                                            <ul class="dropdown-menu custom-dropdown-menu">
-                                                <li>
-                                                    <a href="{{ route('StudentsTab') }}" class="dropdown-item text-danger">
-                                                        <i class="bi bi-eye me-2"></i> View
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('EditStudent') }}" class="dropdown-item text-success">
-                                                        <i class="bi bi-gear me-2"></i> Edit
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="dropdown-item text-warning">
-                                                        <i class="bi bi-trash me-2"></i> Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </td>
-                                </tr>
-
-                                <!-- Row 2 -->
-                                <tr>
-                                    <td>#102</td>
-
-                                    <td class="d-flex align-items-center gap-2">
-                                        <img src="https://i.pinimg.com/736x/04/69/4d/04694d484aadd689e8abf11e9fcdad50.jpg"
-                                            class="rounded-circle" style="width:45px;height:45px;object-fit:cover;">
-
-
-                                        <span class="fw-semibold">Priya Verma</span>
-                                    </td>
-
-                                    <td>Female</td>
-                                    <td>8</td>
-                                    <td>B</td>
-                                    <td>Suresh Verma</td>
-                                    <td>9876541230</td>
-                                    <td>priya@email.com</td>
-                                    <td class="text-start position-relative overflow-visible">
-                                        <div class="dropdown dropstart custom-action-dropdown">
-                                            <button class="btn btn-light btn-sm rounded-circle" data-bs-toggle="dropdown"
-                                                data-bs-auto-close="outside" style="width:32px;height:32px;">
-
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-
-                                            <ul class="dropdown-menu custom-dropdown-menu">
-                                                <li>
-                                                    <a href="{{ route('StudentsTab') }}" class="dropdown-item text-danger">
-                                                        <i class="bi bi-eye me-2"></i> View
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="dropdown-item text-success">
-                                                        <i class="bi bi-gear me-2"></i> Edit
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="dropdown-item text-warning">
-                                                        <i class="bi bi-trash me-2"></i> Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </td>
-                                </tr>
-
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -16,11 +16,11 @@
                 <!-- Profile -->
                 <div class="card shadow-sm border-0 mb-4 p-3">
                     <div class="d-flex align-items-center gap-3">
-                        <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAzL3Jhd3BpeGVsb2ZmaWNlMTBfcGhvdG9ncmFwaHlfb2ZfaGFwcHlfaW5kaWFuX2tpZF9wcmltYXJ5X2VsZW1lbl8xNjBlOTM4MC1mZDhlLTQ2ZGEtYmExOS04YzhmOGZjNWZhZjIucG5n.png"
+                        <img src="{{ $student->photo ? asset('storage/' . $student->photo) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
                             class="rounded-circle" style="width:80px;height:80px;object-fit:cover;">
                         <div>
-                            <h5 class="mb-0">Rahul Sharma</h5>
-                            <small class="text-muted">Class 10 - Section A</small>
+                            <h5 class="mb-0">{{ $student->name }}</h5>
+                            <small class="text-muted">Class {{ $student->class }} - Section {{ $student->section }}</small>
                         </div>
                     </div>
                 </div>
@@ -78,15 +78,16 @@
                             <div class="d-flex align-items-center gap-4 mb-4">
 
                                 <!-- Profile Image -->
-                                <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAzL3Jhd3BpeGVsb2ZmaWNlMTBfcGhvdG9ncmFwaHlfb2ZfaGFwcHlfaW5kaWFuX2tpZF9wcmltYXJ5X2VsZW1lbl8xNjBlOTM4MC1mZDhlLTQ2ZGEtYmExOS04YzhmOGZjNWZhZjIucG5n.png"
+                                <img src="{{ $student->photo ? asset('storage/' . $student->photo) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
                                     class="rounded-circle shadow-sm"
                                     style="width: 110px; height: 110px; object-fit: cover;">
                                 {{-- <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAzL3Jhd3BpeGVsb2ZmaWNlMTBfcGhvdG9ncmFwaHlfb2ZfaGFwcHlfaW5kaWFuX2tpZF9wcmltYXJ5X2VsZW1lbl8xNjBlOTM4MC1mZDhlLTQ2ZGEtYmExOS04YzhmOGZjNWZhZjIucG5n.png"
                                     class="rounded-circle" style="width:80px;height:80px;object-fit:cover;"> --}}
                                 <!-- Info -->
                                 <div>
-                                    <h4 class="mb-1 fw-bold">Rahul Sharma</h4>
-                                    <span class="badge bg-primary">Class 10 - Section A</span>
+                                    <h4 class="mb-1 fw-bold">{{ $student->name }}</h4>
+                                    <span class="badge bg-primary">Class {{ $student->class }} - Section
+                                        {{ $student->section }}</span>
                                     <p class="text-muted mt-2 mb-0" style="max-width: 350px;">
                                         Dedicated and hardworking student with strong academic performance.
                                     </p>
@@ -109,7 +110,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Full Name</small>
-                                                <div class="fw-bold">Rahul Sharma</div>
+                                                <div class="fw-bold">{{ $student->name }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -122,7 +123,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Gender</small>
-                                                <div class="fw-bold">Male</div>
+                                                <div class="fw-bold">{{ $student->gender }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -135,7 +136,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Date of Birth</small>
-                                                <div class="fw-bold">10 Jan 2008</div>
+                                                <div class="fw-bold">{{ $student->dob }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -148,7 +149,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Email</small>
-                                                <div class="fw-bold">rahul@email.com</div>
+                                                <div class="fw-bold">{{ $student->email }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -161,7 +162,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Class</small>
-                                                <div class="fw-bold">10 - A</div>
+                                                <div class="fw-bold">{{ $student->class }} - {{ $student->section }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -175,7 +176,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Roll No</small>
-                                                <div class="fw-bold">#101</div>
+                                                <div class="fw-bold">#{{ $student->id }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -188,7 +189,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Phone</small>
-                                                <div class="fw-bold">9876543210</div>
+                                                <div class="fw-bold">{{ $student->phone }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -201,7 +202,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Address</small>
-                                                <div class="fw-bold">Delhi, India</div>
+                                                <div class="fw-bold">{{ $student->address }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -209,16 +210,13 @@
                                     <!-- Parents -->
                                     <div class="col-md-6 mb-3 border-start border-3 border-primary ps-3">
                                         <small class="text-muted">Father's Name</small>
-                                        <div class="fw-bold">Ramesh Sharma</div>
+                                        <div class="fw-bold">{{ $student->parent->father_name ?? 'N/A' }}</div>
                                     </div>
 
                                     <div class="col-md-6 mb-3 border-start border-3 border-primary ps-3">
                                         <small class="text-muted">Mother's Name</small>
-                                        <div class="fw-bold">Sunita Sharma</div>
+                                        <div class="fw-bold">{{ $student->parent->mother_name ?? 'N/A' }}</div>
                                     </div>
-
-
-
                                 </div>
 
                             </div>
@@ -242,13 +240,15 @@
                             <div class="d-flex align-items-center gap-4 mb-4">
 
                                 <!-- Image -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png"
-                                    class="rounded-circle shadow-sm"
-                                    style="width: 100px; height: 100px; object-fit: cover;">
+                                <img src="{{ $student->parent && $student->parent->photo
+                                    ? asset('storage/' . $student->parent->photo)
+                                    : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
+                                    class="rounded-circle" style="width:100px;height:100px;">
 
                                 <!-- Info -->
                                 <div>
-                                    <h4 class="mb-1 fw-bold">Ramesh & Sunita Sharma</h4>
+                                    <h4 class="mb-1 fw-bold">{{ $student->parent->father_name ?? 'N/A' }} &
+                                        {{ $student->parent->father_name ?? 'N/A' }}</h4>
                                     <span class="badge bg-success">Parents</span>
                                     <p class="text-muted mt-2 mb-0">
                                         Responsible guardians ensuring proper education and support.
@@ -272,7 +272,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Name</small>
-                                                <div class="fw-bold">Ramesh Sharma</div>
+                                                <div class="fw-bold"> {{ $student->parent->father_name ?? 'N/A' }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -285,7 +285,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Wife</small>
-                                                <div class="fw-bold">Sunita Sharma</div>
+                                                <div class="fw-bold"> {{ $student->parent->mother_name ?? 'N/A' }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -298,7 +298,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Occupation</small>
-                                                <div class="fw-bold">Business</div>
+                                                <div class="fw-bold"> {{ $student->parent->occupation ?? 'N/A' }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -311,7 +311,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">ID</small>
-                                                <div class="fw-bold">P-10245</div>
+                                                <div class="fw-bold"> {{ $student->parent->parent_code ?? 'N/A' }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -324,7 +324,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Religion</small>
-                                                <div class="fw-bold">Hindu</div>
+                                                <div class="fw-bold"> {{ $student->parent->religion ?? 'N/A' }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -337,7 +337,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Admission Date</small>
-                                                <div class="fw-bold">12 April 2022</div>
+                                                <div class="fw-bold">{{ $student->admission_date }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -350,7 +350,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Email</small>
-                                                <div class="fw-bold">parent@email.com</div>
+                                                <div class="fw-bold"> {{ $student->parent->email ?? 'N/A' }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -363,7 +363,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Phone</small>
-                                                <div class="fw-bold">9999999999</div>
+                                                <div class="fw-bold"> {{ $student->parent->phone ?? 'N/A' }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -372,7 +372,7 @@
                                     <div class="col-12 mt-2">
                                         <div class="p-3 rounded" style="background:#e9ecef;">
                                             <i class="bi bi-geo-alt-fill me-2"></i>
-                                            <strong>Address:</strong> Delhi, India
+                                            <strong>Address:</strong> {{ $student->parent->address ?? 'N/A' }}
                                         </div>
                                     </div>
 
