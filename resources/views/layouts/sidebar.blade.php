@@ -39,7 +39,7 @@
                         </a>
                         <ul class="nxl-submenu">
 
-                            <li class="nxl-item"><a href="{{ route('StudentsAll') }}" class="nxl-link">Stundets</a></li>
+                            {{-- <li class="nxl-item"><a href="{{ route('StudentsAll') }}" class="nxl-link">Stundets</a></li> --}}
                             <li class="nxl-item"><a href="#" class="nxl-link">Stundets Details</a></li>
                             <li class="nxl-item"><a href="#" class="nxl-link">Admission Form</a></li>
                         </ul>
@@ -101,16 +101,23 @@
                         </a>
                         <ul class="nxl-submenu">
                             <li class="nxl-item"><a href="#" class="nxl-link">All Class</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Add New Class</a></li>
+                            <li class="nxl-item"><a href="{{ route('class') }}" class="nxl-link">Add New Class</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
                         <a href="javascript:void(0);" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-book-open"></i></span>
-                            <span class="nxl-mtext">Subjects</span><span class="nxl-arrow">
-
+                            <span class="nxl-micon"><i class="feather-layers"></i></span>
+                            <span class="nxl-mtext">Subject</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
                         </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a href="#" class="nxl-link">Subject</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link">Add New Subject</a>
+                            </li>
+                        </ul>
                     </li>
+
                     <li class="nxl-item nxl-hasmenu">
                         <a href="javascript:void(0);" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-calendar"></i></span>

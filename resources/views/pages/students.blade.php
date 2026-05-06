@@ -56,7 +56,6 @@
                                     <th>Gender</th>
                                     <th>Class</th>
                                     <th>Section</th>
-
                                     <th>Phone</th>
                                     <th>Email</th>
                                     <th class="text-start">Action</th>
@@ -67,46 +66,54 @@
                                 @foreach ($students as $student)
                                     <tr>
                                         <td>#{{ $student->id }}</td>
+
                                         <td class="d-flex align-items-center gap-2">
                                             <img src="{{ $student->photo ? asset('storage/' . $student->photo) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
                                                 class="rounded-circle" style="width:45px;height:45px;object-fit:cover;">
-                                            <span class="fw semibold">{{ $student->name }}</span>
+                                            <span class="fw-semibold">{{ $student->name }}</span>
                                         </td>
-                                        <td>{{ $student->gender }}</td>
-                                        <td>{{ $student->class }}</td>
-                                        <td>{{ $student->section }}</td>
-                                        <td>{{ $student->phone }}</td>
-                                        <td>{{ $student->email }}</td>
-                                        <td class="text-start position-relative overflow-visible">
-                                            <div class="dropdown dropstart custom-action-dropdown">
-                                                <button class="btn btn-light btn-sm rounded-circle"
-                                                    data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                                                    style="width:32px;height:32px;">
 
+                                        <td>{{ $student->gender ?? '-' }}</td>
+                                        <td>{{ $student->class ?? '-' }}</td>
+                                        <td>{{ $student->section ?? '-' }}</td>
+                                        <td>{{ $student->phone ?? '-' }}</td>
+                                        <td>{{ $student->email ?? '-' }}</td>
+
+                                        <td class="text-start">
+                                            <div class="dropdown">
+                                                <button class="btn btn-light btn-sm rounded-circle"
+                                                    data-bs-toggle="dropdown">
                                                     <i class="bi bi-three-dots-vertical"></i>
                                                 </button>
 
-                                                <ul class="dropdown-menu custom-dropdown-menu">
+                                                <ul class="dropdown-menu">
                                                     <li>
                                                         <a href="{{ route('StudentView', $student->id) }}"
-                                                            class="dropdown-item text-danger">
+                                                            class="dropdown-item">
                                                             <i class="bi bi-eye me-2"></i> View
                                                         </a>
                                                     </li>
+
                                                     <li>
-                                                        <a href="{{ route('EditStudent') }}"
-                                                            class="dropdown-item text-success">
-                                                            <i class="bi bi-gear me-2"></i> Edit
+                                                        <a href="{{ route('EditStudent', $student->id) }}"
+                                                            class="dropdown-item">
+                                                            <i class="bi bi-pencil me-2"></i> Edit
                                                         </a>
                                                     </li>
+
                                                     <li>
-                                                        <a href="#" class="dropdown-item text-warning">
-                                                            <i class="bi bi-trash me-2"></i> Delete
-                                                        </a>
+                                                        <form action="{{ route('DeleteStudent', $student->id) }}"
+                                                            method="POST" onsubmit="return confirm('Are you sure?')">
+                                                            @csrf
+                                                            @method('DELETE')
+
+                                                            <button type="submit" class="dropdown-item text-danger">
+                                                                <i class="bi bi-trash me-2"></i> Delete
+                                                            </button>
+                                                        </form>
                                                     </li>
                                                 </ul>
                                             </div>
-
                                         </td>
                                     </tr>
                                 @endforeach

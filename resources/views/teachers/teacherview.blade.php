@@ -16,11 +16,11 @@
                 <!-- Profile -->
                 <div class="card shadow-sm border-0 mb-4 p-3">
                     <div class="d-flex align-items-center gap-3">
-                        <img src="https://img.freepik.com/free-photo/front-view-young-beautiful-lady-white-t-shirt-black-jeans-coat-holding-green-book-writing-down-white_140725-18665.jpg?semt=ais_hybrid&w=740&q=80"
+                        <img src="{{ $teacher->photo ? asset('storage/' . $teacher->photo) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
                             class="rounded-circle" style="width:80px;height:80px;object-fit:cover;">
                         <div>
-                            <h5 class="mb-0">Neha Gupta</h5>
-                            <small class="text-muted">Mathematics-Second Grade</small>
+                            <h5 class="mb-0">{{ $teacher->name }}</h5>
+                            <small class="text-muted">{{ $teacher->qualification ?? '-' }}</small>
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                 <ul class="nav nav-tabs mb-3">
                     <li class="nav-item">
                         <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#student">
-                            <i class="bi bi-person me-1"></i> Student
+                            <i class="bi bi-person me-1"></i> Teacher
                         </button>
                     </li>
                     <li class="nav-item">
@@ -69,8 +69,8 @@
 
                                 <!-- Info -->
                                 <div>
-                                    <h4 class="mb-1 fw-bold">Neha Gupta</h4>
-                                    <span class="badge bg-primary">Mathematics Teacher</span>
+                                    <h4 class="mb-1 fw-bold">{{ $teacher->name }}</h4>
+                                    <span class="badge bg-primary">{{ $teacher->qualification ?? 'Teacher' }}</span>
                                     <p class="text-muted mt-2 mb-0" style="max-width: 350px;">
                                         Dedicated and experienced teacher with strong academic background.
                                     </p>
@@ -93,7 +93,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Full Name</small>
-                                                <div class="fw-bold">Neha Gupta</div>
+                                                <div class="fw-bold">{{ $teacher->name }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -106,7 +106,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Gender</small>
-                                                <div class="fw-bold">Female</div>
+                                                <div class="fw-bold">{{ $teacher->gender }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +119,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Date of Birth</small>
-                                                <div class="fw-bold">10 Jan 1992</div>
+                                                <div class="fw-bold">{{ $teacher->dob }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -132,7 +132,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Email</small>
-                                                <div class="fw-bold">neha@gmail.com</div>
+                                                <div class="fw-bold">{{ $teacher->email }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -145,7 +145,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Qualification</small>
-                                                <div class="fw-bold">M.Sc Maths</div>
+                                                <div class="fw-bold">{{ $teacher->qualification }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -158,7 +158,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Salary</small>
-                                                <div class="fw-bold">₹35,000</div>
+                                                <div class="fw-bold">{{ $teacher->salary }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -171,7 +171,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Phone</small>
-                                                <div class="fw-bold">9876543210</div>
+                                                <div class="fw-bold">{{ $teacher->phone }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Joining Date</small>
-                                                <div class="fw-bold">15 June 2020</div>
+                                                <div class="fw-bold">{{ $teacher->joining_date }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Experience</small>
-                                                <div class="fw-bold">5 Years</div>
+                                                <div class="fw-bold">{{ $teacher->experience }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -208,7 +208,7 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Address</small>
-                                                <div class="fw-bold">Delhi, India</div>
+                                                <div class="fw-bold">{{ $teacher->address }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -248,31 +248,37 @@
                                     </thead>
 
                                     <tbody>
+                                        @php $total = 0; @endphp
 
-                                        <tr>
-                                            <td>Class 10 - A</td>
-                                            <td>Mathematics</td>
-                                            <td>08:00 AM - 09:00 AM</td>
-                                            <td>Mon - Fri</td>
-                                            <td>45</td>
-                                        </tr>
+                                        @foreach ($teacher->classes as $class)
+                                            @foreach ($class->timetables as $tt)
+                                                <tr>
+                                                    <td>
+                                                        {{ $class->class_name }} - {{ $class->section }}
+                                                    </td>
 
-                                        <tr>
-                                            <td>Class 9 - B</td>
-                                            <td>Mathematics</td>
-                                            <td>10:00 AM - 11:00 AM</td>
-                                            <td>Mon - Thu</td>
-                                            <td>40</td>
-                                        </tr>
+                                                    <td>
+                                                        {{ $tt->subject->subject_name ?? '-' }}
+                                                    </td>
 
-                                        <tr>
-                                            <td>Class 8 - A</td>
-                                            <td>Mathematics</td>
-                                            <td>12:00 PM - 01:00 PM</td>
-                                            <td>Tue - Sat</td>
-                                            <td>38</td>
-                                        </tr>
+                                                    <td>
+                                                        {{ \Carbon\Carbon::parse($tt->start_time)->format('h:i A') }}
+                                                        -
+                                                        {{ \Carbon\Carbon::parse($tt->end_time)->format('h:i A') }}
+                                                    </td>
 
+                                                    <td>
+                                                        {{ $tt->day }}
+                                                    </td>
+
+                                                    <td>
+                                                        --
+                                                    </td>
+                                                </tr>
+
+                                                @php $total++; @endphp
+                                            @endforeach
+                                        @endforeach
                                     </tbody>
 
                                 </table>

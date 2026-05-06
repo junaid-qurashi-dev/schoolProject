@@ -28,15 +28,39 @@ class StudentController extends Controller
         return view('main.addstudent');
     }
 
-    function EditStudent()
+    function EditStudent($id)
     {
-        return view('main.editstudent');
+        $student = Student::with('parent')->findOrFail($id);
+        return view('main.editstudent', compact('student'));
     }
+
+    function update(Request $request, $id)
+    {
+        $student = Student::findOrFail($id);
+
+
+        // ✅ Student update
+        $student->update([
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'dob' => $request->dob,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'class' => $request->class,
+            'section' => $request->section,
+            'admission_date' => $request->admission_date,
+            'address' => $request->address,
+        ]);
+
+
+        return redirect()->back()->with('success', 'Student Updated Successfully!');
+    }
+
+
 
     // 🔥 STORE METHOD (MAIN LOGIC)
 
     public function store(Request $request)
-
     {
 
         try {
@@ -50,8 +74,6 @@ class StudentController extends Controller
                 'phone' => 'nullable',
                 'class' => 'required',
                 'section' => 'required',
-                'photo' => 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:2048',
-                'parent_photo' => 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:2048',
                 'admission_date' => 'nullable|date',
                 'address' => 'nullable',
 
@@ -109,6 +131,16 @@ class StudentController extends Controller
             return redirect()->back()->with('success', 'Student + Parent Added Successfully ✅');
         } catch (\Exception $e) {
             dd($e->getMessage());
+        }
+    }
+
+    public function DeleteStudent($id)
+    {
+        $student = Student::destroy($id);
+        if ($student) {
+            return redirect()->back()->with('success', 'Student Delete Successfully ✅');
+        } else {
+            return redirect()->back()->with('success', 'Student Not Delete ✅');
         }
     }
 }

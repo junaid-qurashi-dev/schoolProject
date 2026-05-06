@@ -9,9 +9,9 @@
                         <h5 class="m-b-10">Add</h5>
                     </div>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('AddStudents') }}">New</a>
+                        <li class="breadcrumb-item"><a href="{{ route('Addteacher') }}">New</a>
                         </li>
-                        <li class="breadcrumb-item">Students</li>
+                        <li class="breadcrumb-item">Teacher</li>
                     </ul>
                 </div>
                 <div class="page-header-right ms-auto">
@@ -32,8 +32,9 @@
                 </div>
             </div>
             <div class="container mt-4">
-                <form enctype="multipart/form-data" method="POST" action="{{ route(students . store) }}">
+                <form enctype="multipart/form-data" method="POST" action="{{ route('storeteacher') }}">
                     @csrf
+
                     <div class="card shadow-sm border-0 p-4" style="border-radius:15px;">
 
                         <h4 class="mb-4 fw-bold text-primary">
@@ -42,12 +43,14 @@
 
                         <div class="row">
 
+                            <!-- ================= Teacher SECTION ================= -->
+
                             <!-- NAME -->
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-semibold">Full Name</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter name">
+                                    <input type="text" name="tname" class="form-control">
                                 </div>
                             </div>
 
@@ -56,7 +59,7 @@
                                 <label class="form-label fw-semibold">Gender</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-gender-ambiguous"></i></span>
-                                    <select name="gender" class="form-select">
+                                    <select name="tgender" class="form-select">
                                         <option disabled selected>Select Gender</option>
                                         <option>Male</option>
                                         <option>Female</option>
@@ -69,7 +72,7 @@
                                 <label class="form-label fw-semibold">Date of Birth</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                    <input type="date" name="dob" class="form-control">
+                                    <input type="date" name="tdob" class="form-control">
                                 </div>
                             </div>
 
@@ -78,7 +81,7 @@
                                 <label class="form-label fw-semibold">Email</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                                    <input type="email" name="email" class="form-control" placeholder="Enter email">
+                                    <input type="email" name="temail" class="form-control">
                                 </div>
                             </div>
 
@@ -87,104 +90,71 @@
                                 <label class="form-label fw-semibold">Phone</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                                    <input type="text" name="phone" class="form-control" placeholder="Enter phone">
+                                    <input type="text" name="tphone" class="form-control">
                                 </div>
                             </div>
 
-                            <!-- SUBJECT -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Subject</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-book"></i></span>
-                                    <select name="subject" class="form-select">
-                                        <option disabled selected>Select Subject</option>
-                                        <option>Mathematics</option>
-                                        <option>Physics</option>
-                                        <option>Chemistry</option>
-                                        <option>English</option>
-                                        <option>Biology</option>
-                                    </select>
-                                </div>
-                            </div>
 
-                            <!-- CLASS (MULTI SELECT) -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Assign Classes</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-mortarboard"></i></span>
-                                    <select name="class" class="form-select" multiple>
-                                        <option>Class 10-A</option>
-                                        <option>Class 9-B</option>
-                                        <option>Class 8-A</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- EXPERIENCE -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Experience</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
-                                    <input type="text" class="form-control" placeholder="e.g. 5 Years">
-                                </div>
-                            </div>
-
-                            <!-- SALARY -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Salary</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-cash"></i></span>
-                                    <input type="number" class="form-control" placeholder="Enter salary">
-                                </div>
-                            </div>
-
-                            <!-- JOINING DATE -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Joining Date</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-calendar-check"></i></span>
-                                    <input type="date" class="form-control">
-                                </div>
-                            </div>
-
-                            <!-- STATUS -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Status</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-toggle-on"></i></span>
-                                    <select class="form-select">
-                                        <option>Active</option>
-                                        <option>Inactive</option>
-                                    </select>
-                                </div>
-                            </div>
 
                             <!-- PHOTO -->
                             <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Photo</label>
-                                <input type="file" class="form-control">
+                                <label class="form-label fw-semibold">Teacher Photo</label>
+                                <input type="file" name="tphoto" class="form-control" onchange="previewImage(event)">
                             </div>
 
-                            <!-- ADDRESS -->
-                            <div class="col-12 mb-4">
-                                <label class="form-label fw-semibold">Address</label>
+                            <div class="col-md-6 mb-4 text-center">
+                                <label class="form-label fw-semibold d-block">Preview</label>
+                                <img id="photoPreview" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                                    style="width:110px;height:110px;border-radius:50%;">
+                            </div>
+
+                            <!-- ADMISSION DATE -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-semibold">Joining Date</label>
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
-                                    <textarea class="form-control" rows="2"></textarea>
+                                    <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                                    <input type="date" name="joining_date" class="form-control">
                                 </div>
                             </div>
-
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-semibold">Salary</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                                    <input type="number" name="salary" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-semibold">Experience</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                                    <input type="number" name="experience" class="form-control">
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- BUTTON -->
-                    <div class="text-end mt-4">
-                        <button class="btn btn-success px-4 py-2 shadow mb-3">
-                            <i class="bi bi-check-circle me-1"></i>Save Teacher
-                        </button>
-                    </div>
+                        <div class="col-md-6 mb-4">
+                            <input type="hidden" name="user_id" class="form-control" value="1">
+                        </div>
+
+                        <!-- ADDRESS -->
+                        <div class="col-12 mb-4">
+                            <label class="form-label fw-semibold">Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                                <textarea name="address" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- BUTTON -->
+                        <div class="text-end mt-4">
+                            <button type="submit" class="btn btn-success px-4 py-2 shadow">
+                                <i class="bi bi-check-circle me-1"></i>Save Teacher
+                            </button>
+                        </div>
 
                 </form>
+
+
             </div>
         </div>
         <footer class="footer">

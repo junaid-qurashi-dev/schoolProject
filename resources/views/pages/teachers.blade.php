@@ -45,7 +45,7 @@
                                 <button class="btn btn-success btn-sm">
                                     <i class="bi bi-file-earmark-excel me-1"></i> Export
                                 </button>
-                                <a href="{{ route('addteacher') }}" class="btn btn-primary btn-sm">
+                                <a href="{{ route('Addteacher') }}" class="btn btn-primary btn-sm">
                                     <i class="bi bi-plus-lg me-1"></i> Add Teacher
                                 </a>
                             </div>
@@ -69,74 +69,73 @@
                             <!-- Table -->
                             <div class="table-responsive">
                                 <table class="table align-middle table-hover">
-
                                     <thead class="table-light">
                                         <tr>
                                             <th>ID</th>
                                             <th>Teacher</th>
-                                            <th>Gender</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>Subject</th>
-                                            <th>Status</th>
-
+                                            <th>Qualification</th>
+                                            <th>Experience</th>
                                             <th class="text-start">Action</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
+                                        @foreach ($teachers as $teacher)
+                                            <tr>
+                                                <td>#{{ $teacher->id }}</td>
 
-                                        <!-- Row 1 -->
-                                        <tr>
-                                            <td>#1001</td>
+                                                <td class="d-flex align-items-center gap-2">
+                                                    <img src="{{ $teacher->photo ? asset('storage/' . $teacher->photo) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
+                                                        class="rounded-circle"
+                                                        style="width:45px;height:45px;object-fit:cover;">
+                                                    <span class="fw-semibold">{{ $teacher->name }}</span>
+                                                </td>
 
-                                            <td class="d-flex align-items-center gap-2">
-                                                <img src="https://img.freepik.com/free-photo/front-view-young-beautiful-lady-white-t-shirt-black-jeans-coat-holding-green-book-writing-down-white_140725-18665.jpg?semt=ais_hybrid&w=740&q=80"
-                                                    class="rounded-circle" style="width:45px;height:45px;object-fit:cover;">
-                                                <span class="fw-semibold">Neha Gupta</span>
-                                            </td>
+                                                <td>{{ $teacher->email ?? '-' }}</td>
+                                                <td>{{ $teacher->phone ?? '-' }}</td>
+                                                <td>{{ $teacher->qualification ?? '-' }}</td>
+                                                <td>{{ $teacher->experience ?? '-' }}</td>
 
-                                            <td>Male</td>
-                                            <td>ramesh@gmail.com</td>
-                                            <td>9876543210 </td>
-                                            <td>Mathematics</td>
-                                            <td>Active</td>
-                                            <!-- Action -->
-                                            <td class="text-start position-relative overflow-visible">
-                                                <div class="dropdown dropstart custom-action-dropdown">
-                                                    <button class="btn btn-light btn-sm rounded-circle"
-                                                        data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                                                        style="width:32px;height:32px;">
+                                                <td class="text-start">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-light btn-sm rounded-circle"
+                                                            data-bs-toggle="dropdown">
+                                                            <i class="bi bi-three-dots-vertical"></i>
+                                                        </button>
 
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a href="{{ route('teachersview', $teacher->id) }}"
+                                                                    class="dropdown-item">
+                                                                    <i class="bi bi-eye me-2"></i> View
+                                                                </a>
+                                                            </li>
 
-                                                    <ul class="dropdown-menu custom-dropdown-menu">
-                                                        <li>
-                                                            <a href="{{ route('teachersview') }}"
-                                                                class="dropdown-item text-danger">
-                                                                <i class="bi bi-eye me-2"></i> View
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="{{ route('editteacher') }}"
-                                                                class="dropdown-item text-success">
-                                                                <i class="bi bi-gear me-2"></i> Edit
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="dropdown-item text-warning">
-                                                                <i class="bi bi-trash me-2"></i> Delete
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                                            <li>
+                                                                <a href="#" class="dropdown-item">
+                                                                    <i class="bi bi-pencil me-2"></i> Edit
+                                                                </a>
+                                                            </li>
 
-                                            </td>
-                                        </tr>
+                                                            <li>
+                                                                <form action="#" method="POST"
+                                                                    onsubmit="return confirm('Are you sure?')">
+                                                                    @csrf
+                                                                    @method('DELETE')
 
-
-
+                                                                    <button type="submit"
+                                                                        class="dropdown-item text-danger">
+                                                                        <i class="bi bi-trash me-2"></i> Delete
+                                                                    </button>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
