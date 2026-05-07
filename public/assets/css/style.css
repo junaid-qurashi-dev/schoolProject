@@ -48,3 +48,7 @@
 .custom-action-dropdown .dropdown-item:hover {
     background: #f5f5f5;
 }
+.nxl-link.active {
+    color: #0d6efd !important;
+    font-weight: bold;
+}

@@ -22,12 +22,29 @@
                         </a>
                         <ul class="nxl-submenu">
                             <li class="nxl-item">
-                                <a href="{{ route('admin') }}" class="nxl-link">Admin</a>
+                                <a href="{{ route('admin') }}"
+                                    class="nxl-link {{ request()->routeIs('admin') ? 'active' : '' }}">
+                                    Admin
+                                </a>
+                                {{-- <a href="{{ route('admin') }}" class="nxl-link">Admin</a> --}}
                             <li class="nxl-item">
-                                <a href="{{ route('students') }}" class="nxl-link">All Students</a>
+                                <a href="{{ route('students') }}"
+                                    class="nxl-link {{ request()->routeIs('students') ? 'active' : '' }}">
+                                    Students
+                                </a>
                             </li>
-                            <li class="nxl-item"><a href="{{ route('parents') }}" class="nxl-link">Parents</a>
-                            <li class="nxl-item"><a href="{{ route('teachers') }}" class="nxl-link">Teachers</a>
+                            <li class="nxl-item">
+                                <a href="{{ route('parents') }}"
+                                    class="nxl-link {{ request()->routeIs('parents') ? 'active' : '' }}">
+                                    Parents
+                                </a>
+                            </li>
+                            <li class="nxl-item">
+                                <a href="{{ route('teachers') }}"
+                                    class="nxl-link {{ request()->routeIs('teachers') ? 'active' : '' }}">
+                                    Teachers
+                                </a>
+                            </li>
                             <li class="nxl-item"><a href="{{ route('AddNew') }}" class="nxl-link">Add New</a>
                         </ul>
                     </li>
@@ -126,10 +143,16 @@
                     </li>
                     <li class="nxl-item nxl-hasmenu">
                         <a href="javascript:void(0);" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-check-square"></i></span>
-                            <span class="nxl-mtext">Attendence</span><span class="nxl-arrow">
+                            <span class="nxl-micon"><i class="feather-layers"></i></span>
+                            <span class="nxl-mtext">Attendence</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
                         </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a href="{{ route('att') }}" class="nxl-link">Attendence</a>
+                            </li>
+                        </ul>
                     </li>
+
                     <li class="nxl-item nxl-hasmenu">
                         <a href="javascript:void(0);" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-file-text"></i></span>

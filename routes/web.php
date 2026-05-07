@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddController;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\AttendenceControllerr;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParentController;
@@ -45,3 +46,6 @@ Route::get('/teacherview/{id}', [TeachersController::class, 'teacherview'])->nam
 Route::get('/addteacher', [TeachersController::class, 'addteacher'])->name('Addteacher');
 Route::post('/teacheradd', [TeachersController::class, 'teacherstore'])->name('storeteacher');
 Route::get('/editteacher', [TeachersController::class, 'editteacher'])->name('editteacher');
+
+//Routes //
+Route::get('/att', [AttendenceControllerr::class, 'index'])->name('att');

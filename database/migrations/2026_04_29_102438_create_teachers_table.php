@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('phone');
             $table->date('dob')->nullable();
-            $table->date('user_id')->nullable();
             $table->string('gender')->nullable();
             $table->date('joining_date')->nullable();
             $table->string('qualification')->nullable();
