@@ -98,18 +98,20 @@
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-mortarboard"></i></span>
                                     <select name="class" class="form-select">
-                                        <option {{ $student->class = '10' ? 'selected' : '' }}>10-A</option>
-                                        <option selected>10-B</option>
-                                        <option>10-C</option>
+                                        <option {{ $student->class = '10' ? 'selected' : '' }}>10th</option>
+                                        <option selected>9th</option>
+                                        <option selected>8th</option>
+                                        <option selected>7th</option>
+                                        <option selected>6th</option>
+                                        <option selected>5th</option>
+                                        <option selected>4th</option>
+                                        <option selected>3th</option>
+                                        <option selected>2th</option>
+                                        <option selected>1th</option>
                                     </select>
                                 </div>
                             </div>
 
-
-                            <select name="section" class="form-select">
-                                <option value="A" {{ $student->section == 'A' ? 'selected' : '' }}>A</option>
-                                <option value="B" {{ $student->section == 'B' ? 'selected' : '' }}>B</option>
-                            </select>
 
                             <!-- ADDRESS -->
                             <div class="col-12 mb-4">

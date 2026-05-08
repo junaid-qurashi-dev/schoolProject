@@ -45,7 +45,8 @@ Route::get('/teacher', [TeachersController::class, 'index'])->name('teachers');
 Route::get('/teacherview/{id}', [TeachersController::class, 'teacherview'])->name('teachersview');
 Route::get('/addteacher', [TeachersController::class, 'addteacher'])->name('Addteacher');
 Route::post('/teacheradd', [TeachersController::class, 'teacherstore'])->name('storeteacher');
-Route::get('/editteacher', [TeachersController::class, 'editteacher'])->name('editteacher');
-
+Route::get('/editteacher/{id}', [TeachersController::class, 'editteacher'])->name('editteacher');
+Route::put('/updateTeacher/{id}', [TeachersController::class, 'updateTeacher'])->name('updateTeacher');
+Route::delete('/teacherdelete/{id}',[TeachersController::class,'teacherdelete'])->name('teacherdelete');
 //Routes //
 Route::get('/att', [AttendenceControllerr::class, 'index'])->name('att');

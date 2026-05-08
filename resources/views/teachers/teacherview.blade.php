@@ -247,7 +247,7 @@
                                         </tr>
                                     </thead>
 
-                                    <tbody>
+                                    {{-- <tbody>
                                         @php $total = 0; @endphp
 
                                         @foreach ($teacher->classes as $class)
@@ -279,7 +279,7 @@
                                                 @php $total++; @endphp
                                             @endforeach
                                         @endforeach
-                                    </tbody>
+                                    </tbody> --}}
 
                                 </table>
                             </div>

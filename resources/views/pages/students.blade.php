@@ -55,7 +55,7 @@
                                     <th>Student</th>
                                     <th>Gender</th>
                                     <th>Class</th>
-                                    <th>Section</th>
+                                    <th>Date_Of_Birth</th>
                                     <th>Phone</th>
                                     <th>Email</th>
                                     <th class="text-start">Action</th>
@@ -75,7 +75,7 @@
 
                                         <td>{{ $student->gender ?? '-' }}</td>
                                         <td>{{ $student->class ?? '-' }}</td>
-                                        <td>{{ $student->section ?? '-' }}</td>
+                                        <td>{{ $student->dob ?? '-' }}</td>
                                         <td>{{ $student->phone ?? '-' }}</td>
                                         <td>{{ $student->email ?? '-' }}</td>
 

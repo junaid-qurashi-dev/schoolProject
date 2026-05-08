@@ -85,6 +85,30 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-semibold">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    <input type="password" name="tpassword" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-semibold">Subject</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    <input type="text" name="tsubject" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-semibold">Qualification</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    <input type="text" name="tqualification" class="form-control">
+                                </div>
+                            </div>
+
                             <!-- PHONE -->
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-semibold">Phone</label>
@@ -96,52 +120,41 @@
 
 
 
-                            <!-- PHOTO -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Teacher Photo</label>
-                                <input type="file" name="tphoto" class="form-control" onchange="previewImage(event)">
-                            </div>
 
-                            <div class="col-md-6 mb-4 text-center">
-                                <label class="form-label fw-semibold d-block">Preview</label>
-                                <img id="photoPreview" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-                                    style="width:110px;height:110px;border-radius:50%;">
-                            </div>
 
-                            <!-- ADMISSION DATE -->
+
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-semibold">Joining Date</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                    <input type="date" name="joining_date" class="form-control">
+                                    <input type="date" name="tjoining_date" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-semibold">Salary</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                    <input type="number" name="salary" class="form-control">
+                                    <input type="number" name="tsalary" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-semibold">Experience</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                    <input type="number" name="experience" class="form-control">
+                                    <input type="number" name="texperience" class="form-control">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-6 mb-4">
-                            <input type="hidden" name="user_id" class="form-control" value="1">
-                        </div>
+
+
 
                         <!-- ADDRESS -->
                         <div class="col-12 mb-4">
                             <label class="form-label fw-semibold">Address</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
-                                <textarea name="address" class="form-control"></textarea>
+                                <textarea name="taddress" class="form-control"></textarea>
                             </div>
                         </div>
 

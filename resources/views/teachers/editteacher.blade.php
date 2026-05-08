@@ -9,7 +9,7 @@
                         <h5 class="m-b-10">Add</h5>
                     </div>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('AddStudents') }}">New</a>
+                        <li class="breadcrumb-item"><a href="{{ route('updateTeacher', $teachers->id) }}">New</a>
                         </li>
                         <li class="breadcrumb-item">Students</li>
                     </ul>
@@ -32,7 +32,9 @@
                 </div>
             </div>
             <div class="container mt-4">
-                <form enctype="multipart/form-data">
+                <form method="post" action="{{ route('updateTeacher', $teachers->id) }}" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <div class="card shadow-sm border-0 p-4" style="border-radius:15px;">
 
                         <h4 class="mb-4 fw-bold text-primary">
@@ -46,7 +48,8 @@
                                 <label class="form-label fw-semibold">Full Name</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                    <input type="text" class="form-control" value="Neha Gupta">
+                                    <input type="text" class="form-control" name="teachername"
+                                        value="{{ $teachers->name }}">
                                 </div>
                             </div>
 
@@ -55,9 +58,9 @@
                                 <label class="form-label fw-semibold">Gender</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-gender-ambiguous"></i></span>
-                                    <select class="form-select">
+                                    <select class="form-select" name="teachergender" value="{{ $teachers->gender }}">
                                         <option>Male</option>
-                                        <option selected>Female</option>
+                                        <option>Female</option>
                                     </select>
                                 </div>
                             </div>
@@ -67,7 +70,8 @@
                                 <label class="form-label fw-semibold">Date of Birth</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                    <input type="date" class="form-control" value="1992-01-10">
+                                    <input type="date" class="form-control" name="teacherdob"
+                                        value="{{ $teachers->dob }}">
                                 </div>
                             </div>
 
@@ -76,7 +80,18 @@
                                 <label class="form-label fw-semibold">Email</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                                    <input type="email" class="form-control" value="neha@gmail.com">
+                                    <input type="email" class="form-control" name="teacheremail"
+                                        value="{{ $teachers->email }}">
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-semibold">Qualification</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    <input type="text" class="form-control" name="teacherqualification"
+                                        value="{{ $teachers->qualification }}">
                                 </div>
                             </div>
 
@@ -85,33 +100,18 @@
                                 <label class="form-label fw-semibold">Phone</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                                    <input type="text" class="form-control" value="9876543210">
+                                    <input type="text" class="form-control" name="teacherphone"
+                                        value="{{ $teachers->phone }}">
                                 </div>
                             </div>
 
-                            <!-- SUBJECT -->
+
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-semibold">Subject</label>
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-book"></i></span>
-                                    <select class="form-select">
-                                        <option selected>Mathematics</option>
-                                        <option>Physics</option>
-                                        <option>Chemistry</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- CLASS (MULTI SELECT) -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Assign Classes</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-mortarboard"></i></span>
-                                    <select class="form-select" multiple>
-                                        <option selected>Class 10-A</option>
-                                        <option selected>Class 9-B</option>
-                                        <option>Class 8-A</option>
-                                    </select>
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    <input type="text" class="form-control" name="teachersubject"
+                                        value="{{ $teachers->subject }}">
                                 </div>
                             </div>
 
@@ -120,7 +120,8 @@
                                 <label class="form-label fw-semibold">Experience</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
-                                    <input type="text" class="form-control" value="5 Years">
+                                    <input type="text" class="form-control" name="teacherexperience"
+                                        value="{{ $teachers->experience }}">
                                 </div>
                             </div>
 
@@ -129,7 +130,8 @@
                                 <label class="form-label fw-semibold">Salary</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-cash"></i></span>
-                                    <input type="number" class="form-control" value="35000">
+                                    <input type="number" class="form-control" name="teachersalary"
+                                        value="{{ $teachers->salary }}">
                                 </div>
                             </div>
 
@@ -138,34 +140,21 @@
                                 <label class="form-label fw-semibold">Joining Date</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-calendar-check"></i></span>
-                                    <input type="date" class="form-control" value="2020-06-15">
+                                    <input type="date" class="form-control" name="teacher_joining_date"
+                                        value="{{ $teachers->joining_date }}">
                                 </div>
                             </div>
 
-                            <!-- STATUS -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Status</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-toggle-on"></i></span>
-                                    <select class="form-select">
-                                        <option selected>Active</option>
-                                        <option>Inactive</option>
-                                    </select>
-                                </div>
-                            </div>
 
-                            <!-- PHOTO -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Photo</label>
-                                <input type="file" class="form-control">
-                            </div>
+
+
 
                             <!-- ADDRESS -->
                             <div class="col-12 mb-4">
                                 <label class="form-label fw-semibold">Address</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
-                                    <textarea class="form-control" rows="2">Delhi, India</textarea>
+                                    <textarea class="form-control" name="teacheraddress" rows="2">{{ $teachers->address }}</textarea>
                                 </div>
                             </div>
 

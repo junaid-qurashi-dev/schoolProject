@@ -90,6 +90,14 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-semibold">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                    <input type="password" name="password" class="form-control">
+                                </div>
+                            </div>
+
                             <!-- CLASS -->
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-semibold">Class</label>
@@ -98,49 +106,36 @@
                                     <select name="class" class="form-select">
                                         <option disabled selected>Select Class</option>
                                         <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
+                                        <option>2nd</option>
+                                        <option>3rd</option>
+                                        <option>4th</option>
+                                        <option>5th</option>
+                                        <option>6th</option>
+                                        <option>7th</option>
+                                        <option>8th</option>
+                                        <option>9th</option>
+                                        <option>10th</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <!-- SECTION -->
+
+                            {{-- <!-- Role -->
                             <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Section</label>
+                                <label class="form-label fw-semibold">Role</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-mortarboard"></i></span>
-                                    <select name="section" class="form-select">
-                                        <option disabled selected>Select Section</option>
-                                        <option>A</option>
-                                        <option>B</option>
-                                        <option>C</option>
+                                    <select name="role" class="form-select">
+                                        <option disabled selected>Select Role</option>
+                                        <option>Admin</option>
+                                        <option>Student</option>
+                                        <option>Parent</option>
+                                        <option>Teacher</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <!-- PHOTO -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Student Photo</label>
-                                <input type="file" name="photo" class="form-control" onchange="previewImage(event)">
-                            </div>
 
-                            <div class="col-md-6 mb-4 text-center">
-                                <label class="form-label fw-semibold d-block">Preview</label>
-                                <img id="photoPreview" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-                                    style="width:110px;height:110px;border-radius:50%;">
-                            </div>
-
-                            <!-- ADMISSION DATE -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Admission Date</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                    <input type="date" name="admission_date" class="form-control">
-                                </div>
-                            </div>
 
                             <!-- ADDRESS -->
                             <div class="col-12 mb-4">
@@ -153,87 +148,13 @@
 
                             <!-- ================= PARENT SECTION ================= -->
 
-                            <hr class="my-4">
 
-                            <h5 class="fw-bold text-primary mb-3">
-                                <i class="bi bi-people-fill me-2"></i>Parent Details
-                            </h5>
-
-                            <!-- FATHER -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Father Name</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                    <input type="text" name="father_name" class="form-control">
-                                </div>
+                            <!-- BUTTON -->
+                            <div class="text-end mt-4">
+                                <button type="submit" class="btn btn-success px-4 py-2 shadow">
+                                    <i class="bi bi-check-circle me-1"></i>Save Student
+                                </button>
                             </div>
-
-                            <!-- MOTHER -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Mother Name</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                    <input type="text" name="mother_name" class="form-control">
-                                </div>
-                            </div>
-                            <!-- PARENT PHOTO -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Parent Photo</label>
-                                <input type="file" name="parent_photo" class="form-control" accept="image/*"
-                                    onchange="previewParentImage(event)">
-                            </div>
-
-                            <!-- PARENT PHOTO PREVIEW -->
-                            <div class="col-md-6 mb-4 text-center">
-                                <label class="form-label fw-semibold d-block">Preview</label>
-                                <img id="parentPreview" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-                                    style="width:110px;height:110px;object-fit:cover;border-radius:50%;">
-                            </div>
-                            <!-- PARENT PHONE -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Parent Phone</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                                    <input type="text" name="parent_phone" class="form-control">
-                                </div>
-                            </div>
-
-                            <!-- PARENT EMAIL -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Parent Email</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                                    <input type="email" name="parent_email" class="form-control">
-                                </div>
-                            </div>
-
-                            <!-- OCCUPATION -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Occupation</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
-                                    <input type="text" name="occupation" class="form-control">
-                                </div>
-                            </div>
-
-                            <!-- RELIGION -->
-                            <div class="col-md-6 mb-4">
-                                <label class="form-label fw-semibold">Religion</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-globe"></i></span>
-                                    <input type="text" name="religion" class="form-control">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- BUTTON -->
-                    <div class="text-end mt-4">
-                        <button type="submit" class="btn btn-success px-4 py-2 shadow">
-                            <i class="bi bi-check-circle me-1"></i>Save Student
-                        </button>
-                    </div>
 
                 </form>
 

@@ -114,13 +114,15 @@
                                                             </li>
 
                                                             <li>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{ route('editteacher', $teacher->id) }}"
+                                                                    class="dropdown-item">
                                                                     <i class="bi bi-pencil me-2"></i> Edit
                                                                 </a>
                                                             </li>
 
                                                             <li>
-                                                                <form action="#" method="POST"
+                                                                <form action="{{ route('teacherdelete', $teacher->id) }}"
+                                                                    method="POST"
                                                                     onsubmit="return confirm('Are you sure?')">
                                                                     @csrf
                                                                     @method('DELETE')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -11,25 +12,34 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function list()
-    {
-        return Student::all();
-    }
-
+   public function list()
+{
+    return User::where('role','student')
+        ->select(
+            'id',
+            'name',
+            'email',
+            'phone',
+            'gender',
+            'dob',
+            'class',
+            'address'
+        )
+        ->latest()
+        ->get();
+}
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $student = new Student();
+        $student = new User();
         $student->name = $request->name;
         $student->gender = $request->gender;
         $student->dob = $request->dob;
         $student->email = $request->email;
         $student->phone = $request->phone;
         $student->class = $request->class;
-        $student->section = $request->section;
-        $student->admission_date = $request->admission_date;
         $student->address = $request->address;
 
         $student->save();
@@ -46,15 +56,13 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
 
-        $student = Student::findOrFail($id);
+        $student = User::findOrFail($id);
         $student->name = $request->name;
         $student->gender = $request->gender;
         $student->dob = $request->dob;
         $student->email = $request->email;
         $student->phone = $request->phone;
         $student->class = $request->class;
-        $student->section = $request->section;
-        $student->admission_date = $request->admission_date;
         $student->address = $request->address;
         if ($student->save()) {
             return ["result" => "Student updated Successfully"];
@@ -78,7 +86,7 @@ class StudentController extends Controller
      */
     public function delete($id)
     {
-        $student  = Student::destroy($id);
+        $student  = User::destroy($id);
         if ($student) {
             return ['result' => "Student record deleted"];
         } else {

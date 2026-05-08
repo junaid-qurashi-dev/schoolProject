@@ -14,17 +14,27 @@
             <div class="container mt-4">
 
                 <!-- Profile -->
-                <div class="card shadow-sm border-0 mb-4 p-3">
-                    <div class="d-flex align-items-center gap-3">
-                        <img src="{{ $student->photo ? asset('storage/' . $student->photo) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
-                            class="rounded-circle" style="width:80px;height:80px;object-fit:cover;">
-                        <div>
-                            <h5 class="mb-0">{{ $student->name }}</h5>
-                            <small class="text-muted">Class {{ $student->class }} - Section {{ $student->section }}</small>
-                        </div>
-                    </div>
-                </div>
 
+                <div class="card shadow-sm border-0 mb-4 p-3">
+
+                    <div class="d-flex align-items-center gap-3">
+
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="rounded-circle"
+                            style="width:80px;height:80px;object-fit:cover;">
+
+                        <div>
+
+                            <h5 class="mb-0">{{ $student->name }}</h5>
+
+                            <small class="text-muted">
+                                Class {{ $student->class }}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
                 <!-- Tabs -->
                 <ul class="nav nav-tabs mb-3">
                     <li class="nav-item">
@@ -86,8 +96,7 @@
                                 <!-- Info -->
                                 <div>
                                     <h4 class="mb-1 fw-bold">{{ $student->name }}</h4>
-                                    <span class="badge bg-primary">Class {{ $student->class }} - Section
-                                        {{ $student->section }}</span>
+                                    <span class="badge bg-primary">Class {{ $student->class }} </span>
                                     <p class="text-muted mt-2 mb-0" style="max-width: 350px;">
                                         Dedicated and hardworking student with strong academic performance.
                                     </p>
@@ -135,7 +144,8 @@
                                                 <i class="bi bi-calendar-date"></i>
                                             </div>
                                             <div>
-                                                <small class="text-muted text-uppercase fw-semibold">Date of Birth</small>
+                                                <small class="text-muted text-uppercase fw-semibold">Date of
+                                                    Birth</small>
                                                 <div class="fw-bold">{{ $student->dob }}</div>
                                             </div>
                                         </div>
@@ -162,7 +172,8 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Class</small>
-                                                <div class="fw-bold">{{ $student->class }} - {{ $student->section }}</div>
+                                                <div class="fw-bold">{{ $student->class }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -272,7 +283,8 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Name</small>
-                                                <div class="fw-bold"> {{ $student->parent->father_name ?? 'N/A' }}</div>
+                                                <div class="fw-bold"> {{ $student->parent->father_name ?? 'N/A' }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -285,7 +297,8 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Wife</small>
-                                                <div class="fw-bold"> {{ $student->parent->mother_name ?? 'N/A' }}</div>
+                                                <div class="fw-bold"> {{ $student->parent->mother_name ?? 'N/A' }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -298,7 +311,8 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">Occupation</small>
-                                                <div class="fw-bold"> {{ $student->parent->occupation ?? 'N/A' }}</div>
+                                                <div class="fw-bold"> {{ $student->parent->occupation ?? 'N/A' }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -311,7 +325,8 @@
                                             </div>
                                             <div>
                                                 <small class="text-muted text-uppercase fw-semibold">ID</small>
-                                                <div class="fw-bold"> {{ $student->parent->parent_code ?? 'N/A' }}</div>
+                                                <div class="fw-bold"> {{ $student->parent->parent_code ?? 'N/A' }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -336,7 +351,8 @@
                                                 <i class="bi bi-calendar-check"></i>
                                             </div>
                                             <div>
-                                                <small class="text-muted text-uppercase fw-semibold">Admission Date</small>
+                                                <small class="text-muted text-uppercase fw-semibold">Admission
+                                                    Date</small>
                                                 <div class="fw-bold">{{ $student->admission_date }}</div>
                                             </div>
                                         </div>
@@ -425,7 +441,8 @@
                                                 <i class="bi bi-person-badge-fill"></i>
                                             </div>
                                             <div>
-                                                <small class="text-muted text-uppercase fw-semibold">Class Teacher</small>
+                                                <small class="text-muted text-uppercase fw-semibold">Class
+                                                    Teacher</small>
                                                 <div class="fw-bold">Mr. Rajesh Singh</div>
                                             </div>
                                         </div>
@@ -451,7 +468,8 @@
                                                 <i class="bi bi-clock-fill"></i>
                                             </div>
                                             <div>
-                                                <small class="text-muted text-uppercase fw-semibold">Class Timing</small>
+                                                <small class="text-muted text-uppercase fw-semibold">Class
+                                                    Timing</small>
                                                 <div class="fw-bold">08:00 AM - 02:00 PM</div>
                                             </div>
                                         </div>
@@ -464,7 +482,8 @@
                                                 <i class="bi bi-people-fill"></i>
                                             </div>
                                             <div>
-                                                <small class="text-muted text-uppercase fw-semibold">Total Students</small>
+                                                <small class="text-muted text-uppercase fw-semibold">Total
+                                                    Students</small>
                                                 <div class="fw-bold">45</div>
                                             </div>
                                         </div>
