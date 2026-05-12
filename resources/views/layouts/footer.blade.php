@@ -4,16 +4,14 @@
 <script src="{{ asset('assets/vendors/js/apexcharts.min.js') }}"></script>
 <script src="{{ asset('assets/vendors/js/circle-progress.min.js') }}"></script>
 
+<!-- Bootstrap JS -->
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+
 <!-- App JS -->
 <script src="{{ asset('assets/js/common-init.min.js') }}"></script>
 <script src="{{ asset('assets/js/dashboard-init.min.js') }}"></script>
-
-<!-- Theme Customizer -->
 <script src="{{ asset('assets/js/theme-customizer-init.min.js') }}"></script>
-<script src="{{ asset('assets/js/script.js') }}"></script>
 
 </body>
-
-
 
 </html>

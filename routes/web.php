@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\AddController;
-use App\Http\Controllers\AppController;
+// use App\Http\Controllers\AppController;
 use App\Http\Controllers\AttendenceControllerr;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\SubjectController;
+// use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeachersController;
 use Illuminate\Support\Facades\Route;
 

@@ -36,6 +36,7 @@ class TeacherController extends Controller
         $teacher->email = $request->email;
         $teacher->phone = $request->phone;
         $teacher->dob = $request->dob;
+        $teacher->password = $request->password;
         $teacher->gender = $request->gender;
         $teacher->qualification = $request->qualification;
         $teacher->experience = $request->experience;

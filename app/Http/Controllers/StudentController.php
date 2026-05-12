@@ -2,29 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
-use App\Models\ParentModel;
+// use App\Models\Student;
+// use App\Models\ParentModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
     // 📌 Students list
-   public function list()
+   function index()
 {
-    return User::where('role','student')
-        ->select(
-            'id',
-            'name',
-            'email',
-            'phone',
-            'gender',
-            'dob',
-            'class',
-            'address'
-        )
-        ->latest()
-        ->get();
+    $students = User::where('role', 'student')
+                    ->latest()
+                    ->get();
+
+    return view('pages.students', compact('students'));
 }
 
     // 📌 View single student

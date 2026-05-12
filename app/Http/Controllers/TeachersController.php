@@ -2,33 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ClassModel;
-use App\Models\Subject;
-use App\Models\Teacher;
-use App\Models\Timetable;
+// use App\Models\ClassModel;
+// use App\Models\Subject;
+// use App\Models\Teacher;
+// use App\Models\Timetable;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class TeachersController extends Controller
 {
-public function list()
+   function index()
 {
-    return User::where('role','teacher')
-        ->select(
-            'id',
-            'name',
-            'email',
-            'phone',
-            'gender',
-            'dob',
-            'subject',
-            'qualification',
-            'salary',
-            'experience',
-            'address'
-        )
-        ->latest()
-        ->get();
+    $teachers = User::where('role', 'teacher')
+                    ->latest()
+                    ->get();
+
+    return view('pages.teachers', compact('teachers'));
 }
     public function teacherview($id)
     {
@@ -67,8 +56,7 @@ public function list()
                 'experience' => $request->texperience,
                 'qualification' => $request->tqualification,
                  'role' => 'teacher',
-                'joining_date' => $request->joining_date ?? now(),
-                'address' => $request->address,
+                'address' => $request->taddress,
             ]);
             // ✅ SUCCESS
             return redirect()->back()->with('success', 'Teacher Added Successfully ');
