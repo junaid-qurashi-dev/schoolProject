@@ -73,12 +73,9 @@
                                     <img src="https://bestwpware.com/html/tf/duralux-demo/assets/images/avatar/1.png"
                                         alt="user-image" class="img-fluid user-avtar" />
                                     <div>
-                                        <h6 class="text-dark mb-0">Alexandra Della <span
-                                                class="badge bg-soft-success text-success ms-1">PRO</span></h6>
-                                        <span class="fs-12 fw-medium text-muted"><a
-                                                href="https://bestwpware.com/cdn-cgi/l/email-protection"
-                                                class="__cf_email__"
-                                                data-cfemail="e3828f869bcd87868f8f82a38c96978f8c8c88cd808c8e">[email&#160;protected]</a></span>
+                                        <p class="text-dark mb-0">{{ Auth::user()->name }} <span
+                                                class="badge bg-soft-success text-success ms-1">PRO</span></p>
+                                        <span class="fs-12 fw-medium text-muted">{{ Auth::user()->email }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -120,49 +117,22 @@
                                 </div>
                             </div>
                             <div class="dropdown-divider"></div>
-                            <div class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="dropdown">
-                                    <span class="hstack">
-                                        <i class="feather-dollar-sign me-2"></i>
-                                        <span>My Profile</span>
-                                    </span>
-                                    <i class="feather-chevron-right ms-auto me-0"></i>
-                                </a>
-                                <div class="dropdown-menu">
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <span class="hstack">
-                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                            <span>Admin</span>
-                                        </span>
-                                    </a>
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <span class="hstack">
-                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                            <span>Teacher</span>
-                                        </span>
-                                    </a>
-
-
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <span class="hstack">
-                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                            <span>Students</span>
-                                        </span>
-                                    </a>
-
-                                </div>
-                            </div>
-                            <div class="dropdown-divider"></div>
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <i class="feather-settings"></i>
                                 <span>Account Settings</span>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="https://bestwpware.com/html/tf/duralux-demo/auth-login-minimal.html"
-                                class="dropdown-item">
+                            <a href="#" class="dropdown-item"
+                                onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+
                                 <i class="feather-log-out"></i>
                                 <span>Logout</span>
                             </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -6,18 +6,19 @@ namespace App\Http\Controllers;
 // use App\Models\ParentModel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
     // 📌 Students list
-   function index()
-{
-    $students = User::where('role', 'student')
-                    ->latest()
-                    ->get();
+    function index()
+    {
+        $students = User::where('role', 'student')
+            ->latest()
+            ->get();
 
-    return view('pages.students', compact('students'));
-}
+        return view('pages.students', compact('students'));
+    }
 
     // 📌 View single student
     function StudentView($id)
@@ -45,13 +46,13 @@ class StudentController extends Controller
 
         // ✅ Student update
         $student->update([
-           'name' => $request->name,
-                'gender' => $request->gender,
-                'dob' => $request->dob,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'class' => $request->class,
-                'address' => $request->address,
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'dob' => $request->dob,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'class' => $request->class,
+            'address' => $request->address,
         ]);
 
 
@@ -77,7 +78,7 @@ class StudentController extends Controller
                 'name' => $request->name,
                 'gender' => $request->gender,
                 'dob' => $request->dob,
-                'password'=> $request->password,
+                'password' => Hash::make($request->password),
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'class' => $request->class,

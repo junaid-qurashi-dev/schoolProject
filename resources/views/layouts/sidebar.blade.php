@@ -16,49 +16,56 @@
                     </li>
                     <li class="nxl-item nxl-hasmenu">
                         <a href="javascript:void(0);" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-airplay"></i></span>
+                            <span class="nxl-micon"><i class="feather-airplay"></i>
+                            </span>
                             <span class="nxl-mtext">Dashboards</span><span class="nxl-arrow"><i
                                     class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
                             <li class="nxl-item">
                                 <a href="{{ route('admin') }}"
-                                    class="nxl-link {{ request()->routeIs('admin') ? 'active' : '' }}">
+                                    class="nxl-link {{ request()->routeIs('admin') ? 'active' : '' }}"
+                                    style="font-size: 14px !important;">
                                     Admin
                                 </a>
                                 {{-- <a href="{{ route('admin') }}" class="nxl-link">Admin</a> --}}
                             <li class="nxl-item">
                                 <a href="{{ route('students') }}"
-                                    class="nxl-link {{ request()->routeIs('students') ? 'active' : '' }}">
+                                    class="nxl-link {{ request()->routeIs('students') ? 'active' : '' }}"
+                                    style="font-size: 14px !important;">
                                     Students
                                 </a>
                             </li>
                             <li class="nxl-item">
                                 <a href="{{ route('parents') }}"
-                                    class="nxl-link {{ request()->routeIs('parents') ? 'active' : '' }}">
+                                    class="nxl-link {{ request()->routeIs('parents') ? 'active' : '' }}"
+                                    style="font-size: 14px !important;">
                                     Parents
                                 </a>
                             </li>
                             <li class="nxl-item">
                                 <a href="{{ route('teachers') }}"
-                                    class="nxl-link {{ request()->routeIs('teachers') ? 'active' : '' }}">
+                                    class="nxl-link {{ request()->routeIs('teachers') ? 'active' : '' }}"
+                                    style="font-size: 14px !important;">
                                     Teachers
                                 </a>
                             </li>
-                            <li class="nxl-item"><a href="{{ route('AddNew') }}" class="nxl-link">Add New</a>
+
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
                         <a href="javascript:void(0);" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-users"></i></span>
-                            <span class="nxl-mtext">Students</span><span class="nxl-arrow"><i
+                            <span class="nxl-micon"><i class="fa-solid fa-indian-rupee-sign"></i> </span>
+                            <span class="nxl-mtext">Fess Module</span><span class="nxl-arrow"><i
                                     class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
 
-                            {{-- <li class="nxl-item"><a href="{{ route('StudentsAll') }}" class="nxl-link">Stundets</a></li> --}}
-                            <li class="nxl-item"><a href="#" class="nxl-link">Stundets Details</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Admission Form</a></li>
+                            {{-- {{ route('fees.index') }} --}}
+                            <li class="nxl-item fs-6"><a href="{{ route('fees.index') }}" class="nxl-link"
+                                    style="font-size: 14px !important;">Payment Entry</a></li>
+                            <li class="nxl-item fs-6"><a href="#" class="nxl-link"
+                                    style="font-size: 14px !important;">Recipte Genrate</a></li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -68,10 +75,14 @@
                                     class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a href="#" class="nxl-link">All Teachers</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Teachers Details</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Add Teachers</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Payment</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link"
+                                    style="font-size: 14px !important;">All Teachers</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link"
+                                    style="font-size: 14px !important;">Teachers Details</a></li>
+                            <li class="nxl-item"><a href="#" class="nxl-link"
+                                    style="font-size: 14px !important;">Add Teachers</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">Payment</a></li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -82,9 +93,12 @@
                                     class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a href="#" class="nxl-link">All Parents</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Parents Details</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Add Parents</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">All Parents</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">Parents Details</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">Add Parents</a></li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -94,8 +108,10 @@
                                     class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a href="#" class="nxl-link">All Book</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link"> Add New Book</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">All Book</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;"> Add New Book</a></li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -105,9 +121,12 @@
                                     class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a href="#" class="nxl-link">All Fees Collection</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Expensee</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Add Expensee</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">All Fees Collection</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">Expensee</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">Add Expensee</a></li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -117,8 +136,10 @@
                                     class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a href="#" class="nxl-link">All Class</a></li>
-                            <li class="nxl-item"><a href="{{ route('class') }}" class="nxl-link">Add New Class</a>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">All Class</a></li>
+                            <li class="nxl-item"><a href=""
+                                    class="nxl-link"style="font-size: 14px !important;">Add New Class</a>
                             </li>
                         </ul>
                     </li>
@@ -129,8 +150,10 @@
                                     class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a href="#" class="nxl-link">Subject</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Add New Subject</a>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">Subject</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">Add New Subject</a>
                             </li>
                         </ul>
                     </li>
@@ -148,7 +171,8 @@
                                     class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a href="{{ route('att') }}" class="nxl-link">Attendence</a>
+                            <li class="nxl-item"><a href=""
+                                    class="nxl-link"style="font-size: 14px !important;">Attendence</a>
                             </li>
                         </ul>
                     </li>
@@ -160,8 +184,10 @@
                                     class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a href="#" class="nxl-link">Exam Schedule</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Exam Grade</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">Exam Schedule</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">Exam Grade</a></li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -171,8 +197,10 @@
                                     class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a href="#" class="nxl-link">Genral</a></li>
-                            <li class="nxl-item"><a href="#" class="nxl-link">Genral</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">Genral</a></li>
+                            <li class="nxl-item"><a href="#"
+                                    class="nxl-link"style="font-size: 14px !important;">Genral</a></li>
                         </ul>
                     </li>
 
@@ -183,12 +211,13 @@
                                     class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a class="nxl-link" href="#/">Support</a></li>
                             <li class="nxl-item"><a class="nxl-link"
-                                    href="https://bestwpware.com/html/tf/duralux-demo/help-knowledgebase.html">KnowledgeBase</a>
+                                    href="#/"style="font-size: 14px !important;">Support</a></li>
+                            <li class="nxl-item"><a class="nxl-link"
+                                    href="https://bestwpware.com/html/tf/duralux-demo/help-knowledgebase.html"style="font-size: 14px !important;">KnowledgeBase</a>
                             </li>
                             <li class="nxl-item"><a class="nxl-link"
-                                    href="https://bestwpware.com/html/tf/duralux-demo/.docs/documentations.html">Documentations</a>
+                                    href="https://bestwpware.com/html/tf/duralux-demo/.docs/documentations.html"style="font-size: 14px !important;">Documentations</a>
                             </li>
                         </ul>
                     </li>

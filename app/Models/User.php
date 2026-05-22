@@ -7,19 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     protected $fillable = [
-    'name',
-    'email',
-    'password',
-    'gender',
-    'phone',
-    'dob',
-    'subject',
-    'joining_date',
-    'class',
-    'role',
-    'qualification',
-    'salary',
-    'experience',
-    'address'
-];
+        'name',
+        'email',
+        'password',
+        'gender',
+        'phone',
+        'dob',
+        'subject',
+        'joining_date',
+        'class',
+        'role',
+        'qualification',
+        'salary',
+        'experience',
+        'address'
+    ];
+    public function fees()
+    {
+        return $this->hasMany(Fee::class, 'student_id');
+    }
 }
