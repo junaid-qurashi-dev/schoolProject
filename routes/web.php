@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\ParentController;
+use App\Models\Fee;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,7 +20,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.u  pdate');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin');
@@ -43,14 +44,27 @@ Route::middleware('auth')->group(function () {
     Route::delete('/teacherdelete/{id}', [TeachersController::class, 'teacherdelete'])->name('teacherdelete');
 
     // Parents Route
-    Route::get('/parents', [ParentController::class, 'index'])->name('parents');
+    // Route::get('/parents', [ParentController::class, 'index'])->name('parents');
 
     // Logout Route //
     Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])
         ->name('logout');
 
     // Fess Route //
-   Route::get('/fees',[FeeController::class,'index'])->name('fees.index');
+    Route::get('/fees', [FeeController::class, 'index'])->name('fees.index');
+    Route::get('/fees/view/{id}', [FeeController::class, 'view'])->name('viewfess');
+    Route::get('/fees/form/{id}', [FeeController::class, 'add'])->name('Addfees');
+    Route::get('/fees/create', [FeeController::class, 'create'])->name('CreateFees');
+    Route::post('/fees/store', [FeeController::class, 'store'])->name('fees.store');
+    Route::post('/fees/add', [FeeController::class, 'addnew'])->name('fees.add');
+
+    Route::get('/student-fee/{id}', [FeeController::class, 'getStudentFee']);
+
+    // Filter Class Student
+    Route::get('/get-students/{class}', [FeeController::class, 'getStudents']);
+    Route::get('/fees/receipt/{id}', [FeeController::class, 'receipt'])->name('fee.receipt');
+    Route::get('/fees/pdf/{id}', [FeeController::class, 'downloadPdf'])->name('fees.pdf');
+    Route::get('/fees/excel', [FeeController::class, 'exportExcel'])->name('fees.excel');
 });
 
 require __DIR__ . '/auth.php';

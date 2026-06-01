@@ -37,8 +37,7 @@
                                 </a>
                             </li>
                             <li class="nxl-item">
-                                <a href="{{ route('parents') }}"
-                                    class="nxl-link {{ request()->routeIs('parents') ? 'active' : '' }}"
+                                <a href="#" class="nxl-link {{ request()->routeIs('parents') ? 'active' : '' }}"
                                     style="font-size: 14px !important;">
                                     Parents
                                 </a>
