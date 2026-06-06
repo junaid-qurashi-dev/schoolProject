@@ -28,7 +28,7 @@
                         {{ session('error') }}
                     </div>
                 @endif
-                <form action="{{ route('fees.add') }}" method="POST">
+                <form action="{{ route('fees.update', $fee->id) }}" method="POST">
 
                     @csrf
 
@@ -37,35 +37,10 @@
                         <!-- Heading -->
                         <h4 class="mb-4 fw-bold text-primary">
                             <i class="bi bi-cash-stack me-2"></i>
-                            Add Fee Record
+                            Update Fee Record
                         </h4>
 
                         <div class="row">
-
-                            <!-- Student -->
-                            <div class="col-md-6 mb-4">
-
-                                <label class="form-label fw-semibold">
-                                    Student
-                                </label>
-
-                                <div class="input-group">
-
-                                    <span class="input-group-text">
-                                        <i class="bi bi-person-fill"></i>
-                                    </span>
-                                    <select id="student_id" name="student_id" class="form-control">
-                                        @foreach ($students as $student)
-                                            <option value="{{ $student->id }}">
-                                                {{ $student->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                            </div>
-
-
 
                             <!-- Total Fee -->
                             <div class="col-md-6 mb-4">
@@ -81,7 +56,7 @@
                                     </span>
 
                                     <input type="number" id="total_fee" name="total_fee" class="form-control"
-                                        placeholder="Enter Total Fee">
+                                        placeholder="Enter Total Fee" value="{{ $fee->total_fee }}">
 
                                 </div>
 
@@ -101,7 +76,7 @@
                                     </span>
 
                                     <input type="number" id="paid_amount" name="paid_amount" class="form-control"
-                                        placeholder="Enter Paid Amount">
+                                        placeholder="Enter Paid Amount" value="{{ $fee->paid_amount }}">
 
                                 </div>
 
@@ -121,7 +96,7 @@
                                     </span>
 
                                     <input type="number" id="remaining_amount" name="remaining_amount" class="form-control"
-                                        placeholder="Enter Remaining Amount" readonly>
+                                        placeholder="Enter Remaining Amount" value="{{ $fee->remaining_amount }}" readonly>
 
                                 </div>
 
@@ -140,9 +115,10 @@
                                         <i class="bi bi-credit-card"></i>
                                     </span>
 
-                                    <select name="payment_method" id="paymentMethod" class="form-select">
+                                    <select name="payment_method" id="paymentMethod" class="form-select"
+                                        aria-valuemax="{{ $fee->payment_method }}">
 
-                                        <option disabled selected>
+                                        <option>
                                             Select Payment Method
                                         </option>
 
@@ -178,7 +154,8 @@
                                     </span>
 
                                     <input type="text" id="transactionId" name="transaction_id" id="transactionId"
-                                        class="form-control" placeholder="Enter Transaction ID">
+                                        class="form-control" placeholder="Enter Transaction ID"
+                                        value="{{ $fee->transaction_id }}">
                                 </div>
 
                             </div>
@@ -197,12 +174,12 @@
                                     </span>
 
                                     <input type="date" name="payment_date" class="form-control"
-                                        value="{{ date('Y-m-d') }}">
+                                        value="{{ $fee->payment_date }}">
                                 </div>
 
                             </div>
 
-                            <input type="hidden" name="status" value="Pending">
+                            <input type="hidden" name="status" value="{{ $fee->satus }}">
                         </div>
 
                         <!-- Submit -->
@@ -225,73 +202,69 @@
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
         <script>
-            $(document).ready(function() {
-
-                // Student Fee Load
-                function loadStudentFee(studentId) {
-                    $.ajax({
-                        url: '/student-fee/' + studentId,
-                        type: 'GET',
-
-                        success: function(response) {
-
-                            if (response) {
-                                $('#total_fee').val(response.total_fee);
-                                $('#remaining_amount').val(response.remaining_amount);
-                                $('#transactionId').val(response.transaction_id ?? '');
-                            } else {
-                                $('#total_fee').val('');
-                                $('#remaining_amount').val('');
-                                $('#transactionId').val('');
-                            }
-
-                            $('#paid_amount').val('');
-                        },
-
-                        error: function() {
-                            console.log('Fee data not found');
-                        }
-                    });
+            function previewImage(event) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    document.getElementById('photoPreview').src = reader.result;
                 }
+                reader.readAsDataURL(event.target.files[0]);
+            }
 
-                // Student Change
-                $('#student_id').on('change', function() {
-
-                    let studentId = $(this).val();
-
-                    if (studentId) {
-                        loadStudentFee(studentId);
-                    }
-
-                });
-
-                // Auto Remaining Calculation
-                $('#paid_amount').on('keyup change', function() {
-
-                    let totalFee = parseFloat($('#total_fee').val()) || 0;
-                    let paidAmount = parseFloat($(this).val()) || 0;
-
-                    if (paidAmount > totalFee) {
-                        alert('Paid Amount cannot be greater than Remaining Fee');
-
-                        $(this).val('');
-                        $('#remaining_amount').val(totalFee);
-
-                        return;
-                    }
-
-                    $('#remaining_amount').val(totalFee - paidAmount);
-
-                });
-
-                // First Load
-                $('#student_id').trigger('change');
-
-            });
+            function previewParentImage(event) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    document.getElementById('parentPreview').src = reader.result;
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            }
         </script>
     </main>
-    \
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            // Student change hone par data load karo
+            $('#student_id').on('change', function() {
+
+                let studentId = $(this).val();
+
+                $.ajax({
+                    url: '/student-fee/' + studentId,
+                    type: 'GET',
+
+                    success: function(response) {
+
+                        if (response) {
+
+                            $('#total_fee').val(response.total_fee);
+                            $('#remaining_amount').val(response.remaining_amount);
+                            $('#transactionId').val(response.transaction_id);
+                            // Nayi payment enter karni hai
+                            $('#paid_amount').val('');
+
+                        } else {
+
+                            // Naya student hai
+                            $('#total_fee').val('');
+                            $('#paid_amount').val('');
+                            $('#remaining_amount').val('');
+                            $('#transactionId').val('');
+
+                        }
+                    },
+
+                    error: function() {
+                        console.log('Error loading student fee data');
+                    }
+                });
+
+            });
+
+            // Page load hote hi pehle selected student ka data load kar do
+            $('#student_id').trigger('change');
+
+        });
+    </script>
 @endsection

@@ -303,6 +303,15 @@
 
                             <i class="bi bi-cash-stack me-1"></i>
 
+                            Total Fees :
+                            ₹ {{ $totalfee }}
+
+                        </div>
+
+                        <div class="status-badge paid">
+
+                            <i class="bi bi-cash-stack me-1"></i>
+
                             Total Paid :
                             ₹ {{ $totalPaid }}
 

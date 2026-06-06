@@ -146,6 +146,15 @@
                                     ₹ {{ $totalPaid }}
 
                                 </div>
+                                {{-- Total Fees  --}}
+                                <div class="badge bg-success fs-6 px-3 py-2">
+
+                                    <i class="bi bi-cash-stack me-1"></i>
+
+                                    Total Fees :
+                                    ₹ {{ $totalfee }}
+
+                                </div>
 
                                 <!-- Print Button -->
                                 <a href="{{ route('fee.receipt', $fees->id) }}"

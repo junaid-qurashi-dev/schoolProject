@@ -271,6 +271,12 @@
             <!-- Summary -->
             <div class="summary-box">
 
+                Total FeesTill Now :
+                Rs. {{ number_format($totalfee, 2) }}
+
+            </div>
+            <div class="summary-box">
+
                 Total Paid Till Now :
                 Rs. {{ number_format($totalPaid, 2) }}
 

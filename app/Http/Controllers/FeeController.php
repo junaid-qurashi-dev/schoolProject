@@ -15,42 +15,37 @@ class FeeController extends Controller
 
     public function index(Request $request)
     {
-        $query = Fee::with('student');
+        //  =====Latest Fee per Student===== //
+        $query = Fee::whereIn('id', function ($sub) {
+            $sub->selectRaw('MAX(id)')->from('fees')->groupBy('student_id');
+        })->with('student');
+
+        // =====Search Filter (student name)======//
         if ($request->filled('search')) {
             $query->whereHas('student', function ($q) use ($request) {
                 $q->where('name', 'LIKE', '%' . $request->search . '%');
             });
         }
+
+        // ====Class FIlter=====
         if ($request->filled('class')) {
             $query->whereHas('student', function ($q) use ($request) {
                 $q->where('class', $request->class);
             });
         }
 
-        // Table Data
-        $feeses = $query->orderBy('id', 'ASC')->paginate(5)->appends($request->query());
-        $partialFees = Fee::where('paid_amount', '>', 0)
-            ->where('remaining_amount', '>', 0)
-            ->count();
-        // Dashboard Status
+        // Table Data (latest per student) //
+        $feeses = $query->orderBy('id', 'DESC')->paginate(5)->onEachSide(0)->appends($request->query());
+
+
+        // latest ids per student (for dashboard status) //
+        $latestIds = Fee::selectRaw('MAX(id)')->groupBy('student_id');
+
+        // Dashboard Status //
         $totalRecord = Fee::count();
-
-        $latestIds = Fee::selectRaw('MAX(id) as id')
-            ->groupBy('student_id')
-            ->pluck('id');
-
-        $paidFees = Fee::whereIn('id', $latestIds)
-            ->where('status', 'Paid')
-            ->count();
-
-        $partialFees = Fee::whereIn('id', $latestIds)
-            ->where('status', 'Partial')
-            ->count();
-
-        $pendingFees = Fee::whereIn('id', $latestIds)
-            ->where('status', 'Pending')
-            ->count();
-
+        $paidFees = Fee::whereIn('id', $latestIds)->where('status', 'Paid')->count();
+        $partialFees = Fee::whereIn('id', $latestIds)->where('status', 'Partial')->count();
+        $pendingFees  = Fee::whereIn('id', $latestIds)->where('status', 'Pendding')->count();
         $totalCollection = Fee::sum('paid_amount');
         $totalStudents = User::where('role', 'student')->count();
         return view('fees.list', compact(
@@ -64,6 +59,82 @@ class FeeController extends Controller
         ));
     }
 
+    // Card Modal Click Data Show In Modal //
+    // public function cardData($type)
+    // {
+    //     switch ($type) {
+
+    //         case 'students':
+
+    //             $data = User::where('role', 'student')
+    //                 ->select('id', 'name', 'class', 'phone')
+    //                 ->paginate(5);
+
+    //             return response()->json([
+    //                 'title' => 'All Students',
+    //                 'data' => $data
+    //             ]);
+
+    //         case 'paid':
+
+    //             $data = Fee::with('student')
+    //                 ->where('status', 'Paid')
+    //                 ->whereIn('id', function ($query) {
+    //                     $query->selectRaw('MAX(id)')
+    //                         ->from('fees')
+    //                         ->where('status', 'Paid')
+    //                         ->groupBy('student_id');
+    //                 })
+    //                 ->paginate(5);
+
+    //             return response()->json([
+    //                 'title' => 'All Paid Students (Latest Only)',
+    //                 'data' => $data
+    //             ]);
+
+    //         case 'partial':
+
+    //             $data = Fee::with('student')
+    //                 ->where('status', 'Partial')
+    //                 ->whereIn('id', function ($query) {
+    //                     $query->selectRaw('MAX(id)')
+    //                         ->from('fees')
+    //                         ->where('status', 'Partial')
+    //                         ->groupBy('student_id');
+    //                 })
+    //                 ->paginate(5);
+
+    //             return response()->json([
+    //                 'title' => 'All Partial Students (Latest Only)',
+    //                 'data' => $data
+    //             ]);
+
+    //         case 'pending':
+
+    //             $data = Fee::with('student')
+    //                 ->where('status', 'Pending')
+    //                 ->whereIn('id', function ($query) {
+    //                     $query->selectRaw('MAX(id)')
+    //                         ->from('fees')
+    //                         ->where('status', 'Pending')
+    //                         ->groupBy('student_id');
+    //                 })
+    //                 ->paginate(5);
+
+    //             return response()->json([
+    //                 'title' => 'All Pending Students (Latest Only)',
+    //                 'data' => $data
+    //             ]);
+
+    //         default:
+    //             return response()->json([
+    //                 'title' => "No Data",
+    //                 "data" => []
+    //             ]);
+    //     }
+    // }
+
+
     public function receipt($id)
     {
         $fees = Fee::with('student')->findOrFail($id);
@@ -71,16 +142,19 @@ class FeeController extends Controller
         // Same Student All Payments
         $allFees = Fee::where('student_id', $fees->student_id)
             ->latest()
-            ->paginate(3);
+            ->paginate(3)->onEachSide(0);
 
         // Total Paid
         $totalPaid = Fee::where('student_id', $fees->student_id)
             ->sum('paid_amount');
-
+        $totalfee = Fee::where('student_id', $fees->student_id)
+            ->orderBy('id', 'asc')
+            ->value('total_fee');
         return view('fees.receipt-pdf', compact(
             'fees',
             'allFees',
-            'totalPaid'
+            'totalPaid',
+            'totalfee'
         ));
     }
 
@@ -96,11 +170,14 @@ class FeeController extends Controller
         // Total Paid Amount
         $totalPaid = Fee::where('student_id', $fees->student_id)
             ->sum('paid_amount');
-
+        $totalfee = Fee::where('student_id', $fees->student_id)
+            ->orderBy('id', 'asc')
+            ->value('total_fee');
         $pdf = Pdf::loadView('fees.receipt', compact(
             'fees',
             'allFees',
-            'totalPaid'
+            'totalPaid',
+            'totalfee'
         ));
 
         return $pdf->download('fee-receipt.pdf');
@@ -125,9 +202,13 @@ class FeeController extends Controller
         $totalPaid = Fee::where('student_id', $fees->student_id)
             ->sum('paid_amount');
 
+        $totalfee = Fee::where('student_id', $fees->student_id)
+            ->orderBy('id', 'asc')
+            ->value('total_fee');
         return view('fees.viewfess', compact(
             'fees',
             'allFees',
+            'totalfee',
             'totalPaid'
         ));
     }
@@ -136,6 +217,8 @@ class FeeController extends Controller
     {
         return view('fees.addrecord');
     }
+
+
 
     // Add New Record //
     public function record(Request $request)
@@ -177,6 +260,55 @@ class FeeController extends Controller
             ->route('fees.index')
             ->with('success', 'Fee Record Added Successfully');
     }
+
+    // Edit New Record Page //
+    public function edit($id)
+    {
+        $fee = Fee::findOrFail($id);
+        return view('fees.edit', compact('fee'));
+    }
+
+    // Edit new record method //
+    public function editRecord(Request $request, $id)
+    {
+
+        $request->validate([
+            'total_fee' => 'required',
+            'paid_amount' => 'required',
+        ]);
+        $fee = Fee::findOrFail($id);
+        $fee->total_fee = $request->total_fee;
+        $fee->paid_amount   = $request->paid_amount;
+        $fee->remaining_amount  = $request->total_fee - $request->paid_amount;
+        $fee->payment_method  = $request->payment_method;
+        $fee->transaction_id  = $request->transaction_id;
+        $fee->payment_date   = $request->payment_date;
+        // Auto Save //
+        if ($fee->remaining_amount <= 0) {
+            $fee->status = 'Paid';
+        } elseif ($fee->paid_amount > 0) {
+            $fee->status = "Partial";
+        } else {
+            $fee->status = 'Pending';
+        }
+
+        $fee->save();
+
+        return redirect()
+            ->route('fees.index')
+            ->with('success', 'Fee Record Updated Successfully');
+    }
+
+    public function deleteRecord($id)
+    {
+        $fee = Fee::findOrFail($id);
+        $fee->delete();
+        return redirect()->route('fees.index')->with('success', 'Fee Record Deleted Successfully');
+    }
+
+
+
+
     // Add Form
     public function add($id)
     {
@@ -202,7 +334,7 @@ class FeeController extends Controller
 
     public function create()
     {
-        $students = User::where('role', 'student')->get();
+        $students = User::where('role', 'student')->orderBy('id', 'DESC')->get();
 
         return view('fees.create', compact('students'));
     }

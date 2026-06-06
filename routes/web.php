@@ -65,6 +65,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/fees/receipt/{id}', [FeeController::class, 'receipt'])->name('fee.receipt');
     Route::get('/fees/pdf/{id}', [FeeController::class, 'downloadPdf'])->name('fees.pdf');
     Route::get('/fees/excel', [FeeController::class, 'exportExcel'])->name('fees.excel');
+
+    // Edit Fee Record //
+    Route::get('/fees/edit/{id}', [FeeController::class, 'edit'])->name('fees.edit');
+    Route::post('/fees/update/{id}', [FeeController::class, 'editRecord'])->name('fees.update');
+    // Delete Fee Record //
+    Route::delete('/fees/{id}', [FeeController::class, 'deleteRecord'])->name('fees.destroy');
+
+    // Modal Route
+    // Route::get('/dashboard/card-data/{type}', [FeeController::class, 'cardData']);
 });
 
 require __DIR__ . '/auth.php';
