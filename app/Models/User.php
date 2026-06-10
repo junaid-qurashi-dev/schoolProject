@@ -26,4 +26,19 @@ class User extends Model
     {
         return $this->hasMany(Fee::class, 'student_id');
     }
+
+    public function teachingSubjects()
+    {
+        return $this->hasMany(ClassSubject::class, 'teacher_id');
+    }
+
+    public function timetables()
+    {
+        return $this->hasMany(Timetable::class, 'teacher_id');
+    }
+
+    public function studentClasses()
+    {
+        return $this->hasMany(StudentClass::class, 'student_id');
+    }
 }

@@ -59,6 +59,12 @@
                             <i class="bi bi-journal-bookmark me-1"></i> Subjects
                         </button>
                     </li>
+                    
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#subjects">
+                            <i class="bi bi-journal-bookmark me-1"></i> Fees Record/Info
+                        </button>
+                    </li>
                     <li class="nav-item">
                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#exams">
                             <i class="bi bi-file-earmark-text me-1"></i> Exams

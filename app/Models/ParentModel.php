@@ -21,8 +21,4 @@ class ParentModel extends Model
         'admission_date',
     ];
 
-    public function student()
-    {
-        return $this->hasMany(Student::class);
-    }
 }

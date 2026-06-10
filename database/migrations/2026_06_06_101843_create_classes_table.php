@@ -16,11 +16,13 @@ return new class extends Migration
             $table->string('class_name');
             $table->foreignId('class_teacher_id')->nullable()->constrained('users')->nullOnDelete();
             $table->string('room_no')->nullable();
+           
             $table->string('academic_year')->nullable();
-            $table->integer('total_students')->default(0);
             $table->timestamps();
         });
     }
+
+
 
     /**
      * Reverse the migrations.

@@ -12,6 +12,7 @@
 
     <!-- YOUR CUSTOM CSS (IMPORTANT) -->
     <link rel="stylesheet" href="{{ asset('assets/css/list.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/students.css') }}">
 </head>
 
 <body>

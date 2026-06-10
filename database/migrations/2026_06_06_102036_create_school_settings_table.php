@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('school_settings', function (Blueprint $table) {
             $table->id();
+            $table->string('school_name');
+            $table->time('summer_start_time');
+            $table->time('summer_end_time');
+            $table->time('winter_start_time');
+            $table->time('winter_end_time');
+            $table->enum('current_session', [
+                'summer',
+                'winter'
+            ]);
             $table->timestamps();
         });
     }
