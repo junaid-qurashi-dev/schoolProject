@@ -19,9 +19,4 @@ class Student extends Model
         'admission_date',
         'address'
     ];
-
-    public function parent()
-    {
-        return $this->belongsTo(ParentModel::class);
-    }
 }

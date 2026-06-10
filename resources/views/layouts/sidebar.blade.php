@@ -37,8 +37,7 @@
                                 </a>
                             </li>
                             <li class="nxl-item">
-                                <a href="{{ route('parents') }}"
-                                    class="nxl-link {{ request()->routeIs('parents') ? 'active' : '' }}"
+                                <a href="#" class="nxl-link {{ request()->routeIs('parents') ? 'active' : '' }}"
                                     style="font-size: 14px !important;">
                                     Parents
                                 </a>
@@ -66,6 +65,22 @@
                                     style="font-size: 14px !important;">Payment Entry</a></li>
                             <li class="nxl-item fs-6"><a href="#" class="nxl-link"
                                     style="font-size: 14px !important;">Recipte Genrate</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="fa-solid fa-indian-rupee-sign"></i> </span>
+                            <span class="nxl-mtext">TimeTable</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+
+                            {{-- {{ route('fees.index') }} --}}
+                            <li class="nxl-item fs-6"><a href="#" class="nxl-link"
+                                    style="font-size: 14px !important;">Time Table</a></li>
+                            <li class="nxl-item fs-6"><a href="#" class="nxl-link"
+                                    style="font-size: 14px !important;">Notice</a></li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
